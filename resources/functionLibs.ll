@@ -1,5 +1,5 @@
-; ModuleID = 'test.cpp'
-source_filename = "test.cpp"
+; ModuleID = 'functionLibs.cpp'
+source_filename = "functionLibs.cpp"
 target datalayout = "e-m:o-i64:64-f80:128-n8:16:32:64-S128"
 target triple = "x86_64-apple-macosx10.14.0"
 
@@ -31,12 +31,12 @@ target triple = "x86_64-apple-macosx10.14.0"
 %union.anon.0 = type { i8 }
 
 @_ZNSt3__14coutE = external global %"class.std::__1::basic_ostream", align 8
-@.str = private unnamed_addr constant [19 x i8] c"function is call!\0A\00", align 1
+@.str = private unnamed_addr constant [20 x i8] c"function is called\0A\00", align 1
 @_ZNSt3__15ctypeIcE2idE = external global %"class.std::__1::locale::id", align 8
 
 ; Function Attrs: noinline optnone ssp uwtable
 define void @_Z4demov() #0 {
-  %1 = call dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNSt3__1lsINS_11char_traitsIcEEEERNS_13basic_ostreamIcT_EES6_PKc(%"class.std::__1::basic_ostream"* dereferenceable(160) @_ZNSt3__14coutE, i8* getelementptr inbounds ([19 x i8], [19 x i8]* @.str, i32 0, i32 0))
+  %1 = call dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNSt3__1lsINS_11char_traitsIcEEEERNS_13basic_ostreamIcT_EES6_PKc(%"class.std::__1::basic_ostream"* dereferenceable(160) @_ZNSt3__14coutE, i8* getelementptr inbounds ([20 x i8], [20 x i8]* @.str, i32 0, i32 0))
   ret void
 }
 
@@ -49,25 +49,9 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   %5 = load %"class.std::__1::basic_ostream"*, %"class.std::__1::basic_ostream"** %3, align 8
   %6 = load i8*, i8** %4, align 8
   %7 = load i8*, i8** %4, align 8
-  %8 = call i64 @_ZNSt3__111char_traitsIcE6lengthEPKc(i8* %7) #7
+  %8 = call i64 @_ZNSt3__111char_traitsIcE6lengthEPKc(i8* %7) #6
   %9 = call dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNSt3__124__put_character_sequenceIcNS_11char_traitsIcEEEERNS_13basic_ostreamIT_T0_EES7_PKS4_m(%"class.std::__1::basic_ostream"* dereferenceable(160) %5, i8* %6, i64 %8)
   ret %"class.std::__1::basic_ostream"* %9
-}
-
-; Function Attrs: noinline nounwind optnone ssp uwtable
-define i32 @_Z4funci(i32) #1 {
-  %2 = alloca i32, align 4
-  store i32 %0, i32* %2, align 4
-  %3 = load i32, i32* %2, align 4
-  %4 = add nsw i32 %3, 2
-  ret i32 %4
-}
-
-; Function Attrs: noinline norecurse nounwind optnone ssp uwtable
-define i32 @main() #2 {
-  %1 = alloca i32, align 4
-  store i32 0, i32* %1, align 4
-  ret i32 0
 }
 
 ; Function Attrs: noinline optnone ssp uwtable
@@ -205,10 +189,10 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   %107 = bitcast i8* %106 to %"class.std::__1::basic_ios"*
   store %"class.std::__1::basic_ios"* %107, %"class.std::__1::basic_ios"** %12, align 8
   %108 = load %"class.std::__1::basic_ios"*, %"class.std::__1::basic_ios"** %12, align 8
-  %109 = call i32 @_ZNSt3__111char_traitsIcE3eofEv() #7
+  %109 = call i32 @_ZNSt3__111char_traitsIcE3eofEv() #6
   %110 = getelementptr inbounds %"class.std::__1::basic_ios", %"class.std::__1::basic_ios"* %108, i32 0, i32 2
   %111 = load i32, i32* %110, align 8
-  %112 = call zeroext i1 @_ZNSt3__111char_traitsIcE11eq_int_typeEii(i32 %109, i32 %111) #7
+  %112 = call zeroext i1 @_ZNSt3__111char_traitsIcE11eq_int_typeEii(i32 %109, i32 %111) #6
   br i1 %112, label %113, label %140
 
 ; <label>:113:                                    ; preds = %85
@@ -247,7 +231,7 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   store i8* %131, i8** %10, align 8
   %132 = extractvalue { i8*, i32 } %130, 1
   store i32 %132, i32* %11, align 4
-  call void @_ZNSt3__16localeD1Ev(%"class.std::__1::locale"* %9) #7
+  call void @_ZNSt3__16localeD1Ev(%"class.std::__1::locale"* %9) #6
   %133 = load i8*, i8** %10, align 8
   %134 = load i32, i32* %11, align 4
   %135 = insertvalue { i8*, i32 } undef, i8* %133, 0
@@ -255,7 +239,7 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   br label %180
 
 ; <label>:137:                                    ; preds = %119
-  call void @_ZNSt3__16localeD1Ev(%"class.std::__1::locale"* %9) #7
+  call void @_ZNSt3__16localeD1Ev(%"class.std::__1::locale"* %9) #6
   %138 = sext i8 %128 to i32
   %139 = getelementptr inbounds %"class.std::__1::basic_ios", %"class.std::__1::basic_ios"* %108, i32 0, i32 2
   store i32 %138, i32* %139, align 8
@@ -334,12 +318,12 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   store i8* %182, i8** %30, align 8
   %183 = extractvalue { i8*, i32 } %181, 1
   store i32 %183, i32* %31, align 4
-  call void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD1Ev(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"* %29) #7
+  call void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD1Ev(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"* %29) #6
   br label %184
 
 ; <label>:184:                                    ; preds = %180, %174
   %185 = load i8*, i8** %30, align 8
-  %186 = call i8* @__cxa_begin_catch(i8* %185) #7
+  %186 = call i8* @__cxa_begin_catch(i8* %185) #6
   %187 = load %"class.std::__1::basic_ostream"*, %"class.std::__1::basic_ostream"** %26, align 8
   %188 = bitcast %"class.std::__1::basic_ostream"* %187 to i8**
   %189 = load i8*, i8** %188, align 8
@@ -364,7 +348,7 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   br label %200
 
 ; <label>:200:                                    ; preds = %199, %40
-  call void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD1Ev(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"* %29) #7
+  call void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD1Ev(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"* %29) #6
   br label %197
 
 ; <label>:201:                                    ; preds = %184
@@ -391,7 +375,7 @@ define linkonce_odr dereferenceable(160) %"class.std::__1::basic_ostream"* @_ZNS
   %212 = landingpad { i8*, i32 }
           catch i8* null
   %213 = extractvalue { i8*, i32 } %212, 0
-  call void @__clang_call_terminate(i8* %213) #8
+  call void @__clang_call_terminate(i8* %213) #7
   unreachable
 }
 
@@ -400,11 +384,11 @@ define linkonce_odr i64 @_ZNSt3__111char_traitsIcE6lengthEPKc(i8*) #1 align 2 {
   %2 = alloca i8*, align 8
   store i8* %0, i8** %2, align 8
   %3 = load i8*, i8** %2, align 8
-  %4 = call i64 @strlen(i8* %3) #7
+  %4 = call i64 @strlen(i8* %3) #6
   ret i64 %4
 }
 
-declare void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryC1ERS3_(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"*, %"class.std::__1::basic_ostream"* dereferenceable(160)) unnamed_addr #3
+declare void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryC1ERS3_(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"*, %"class.std::__1::basic_ostream"* dereferenceable(160)) unnamed_addr #2
 
 declare i32 @__gxx_personality_v0(...)
 
@@ -580,7 +564,7 @@ define linkonce_odr hidden %"class.std::__1::basic_streambuf"* @_ZNSt3__116__pad
   %127 = load %"struct.std::__1::__compressed_pair_elem"*, %"struct.std::__1::__compressed_pair_elem"** %26, align 8
   %128 = getelementptr inbounds %"struct.std::__1::__compressed_pair_elem", %"struct.std::__1::__compressed_pair_elem"* %127, i32 0, i32 0
   %129 = bitcast %"struct.std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char> >::__rep"* %128 to i8*
-  call void @llvm.memset.p0i8.i64(i8* align 8 %129, i8 0, i64 24, i1 false) #7
+  call void @llvm.memset.p0i8.i64(i8* align 8 %129, i8 0, i64 24, i1 false) #6
   %130 = bitcast %"class.std::__1::__compressed_pair"* %125 to %"struct.std::__1::__compressed_pair_elem.1"*
   store %"struct.std::__1::__compressed_pair_elem.1"* %130, %"struct.std::__1::__compressed_pair_elem.1"** %25, align 8
   %131 = load %"struct.std::__1::__compressed_pair_elem.1"*, %"struct.std::__1::__compressed_pair_elem.1"** %25, align 8
@@ -693,7 +677,7 @@ define linkonce_odr hidden %"class.std::__1::basic_streambuf"* @_ZNSt3__116__pad
   store i8* %200, i8** %56, align 8
   %201 = extractvalue { i8*, i32 } %199, 1
   store i32 %201, i32* %57, align 4
-  call void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev(%"class.std::__1::basic_string"* %55) #7
+  call void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev(%"class.std::__1::basic_string"* %55) #6
   br label %247
 
 ; <label>:202:                                    ; preds = %191
@@ -701,7 +685,7 @@ define linkonce_odr hidden %"class.std::__1::basic_streambuf"* @_ZNSt3__116__pad
   br label %203
 
 ; <label>:203:                                    ; preds = %202, %194
-  call void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev(%"class.std::__1::basic_string"* %55) #7
+  call void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev(%"class.std::__1::basic_string"* %55) #6
   %204 = load i32, i32* %58, align 4
   switch i32 %204, label %252 [
     i32 0, label %205
@@ -787,33 +771,33 @@ define linkonce_odr hidden %"class.std::__1::basic_streambuf"* @_ZNSt3__116__pad
 }
 
 ; Function Attrs: nounwind
-declare void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD1Ev(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"*) unnamed_addr #4
+declare void @_ZNSt3__113basic_ostreamIcNS_11char_traitsIcEEE6sentryD1Ev(%"class.std::__1::basic_ostream<char, std::__1::char_traits<char> >::sentry"*) unnamed_addr #3
 
 declare i8* @__cxa_begin_catch(i8*)
 
-declare void @_ZNSt3__18ios_base33__set_badbit_and_consider_rethrowEv(%"class.std::__1::ios_base"*) #3
+declare void @_ZNSt3__18ios_base33__set_badbit_and_consider_rethrowEv(%"class.std::__1::ios_base"*) #2
 
 declare void @__cxa_end_catch()
 
 ; Function Attrs: noinline noreturn nounwind
-define linkonce_odr hidden void @__clang_call_terminate(i8*) #5 {
-  %2 = call i8* @__cxa_begin_catch(i8* %0) #7
-  call void @_ZSt9terminatev() #8
+define linkonce_odr hidden void @__clang_call_terminate(i8*) #4 {
+  %2 = call i8* @__cxa_begin_catch(i8* %0) #6
+  call void @_ZSt9terminatev() #7
   unreachable
 }
 
 declare void @_ZSt9terminatev()
 
 ; Function Attrs: argmemonly nounwind
-declare void @llvm.memcpy.p0i8.p0i8.i64(i8* nocapture writeonly, i8* nocapture readonly, i64, i1) #6
+declare void @llvm.memcpy.p0i8.p0i8.i64(i8* nocapture writeonly, i8* nocapture readonly, i64, i1) #5
 
 ; Function Attrs: nounwind
-declare void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev(%"class.std::__1::basic_string"*) unnamed_addr #4
+declare void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEED1Ev(%"class.std::__1::basic_string"*) unnamed_addr #3
 
-declare void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEmc(%"class.std::__1::basic_string"*, i64, i8 signext) #3
+declare void @_ZNSt3__112basic_stringIcNS_11char_traitsIcEENS_9allocatorIcEEE6__initEmc(%"class.std::__1::basic_string"*, i64, i8 signext) #2
 
 ; Function Attrs: argmemonly nounwind
-declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1) #6
+declare void @llvm.memset.p0i8.i64(i8* nocapture writeonly, i8, i64, i1) #5
 
 ; Function Attrs: noinline nounwind optnone ssp uwtable
 define linkonce_odr zeroext i1 @_ZNSt3__111char_traitsIcE11eq_int_typeEii(i32, i32) #1 align 2 {
@@ -832,27 +816,26 @@ define linkonce_odr i32 @_ZNSt3__111char_traitsIcE3eofEv() #1 align 2 {
   ret i32 -1
 }
 
-declare void @_ZNKSt3__18ios_base6getlocEv(%"class.std::__1::locale"* sret, %"class.std::__1::ios_base"*) #3
+declare void @_ZNKSt3__18ios_base6getlocEv(%"class.std::__1::locale"* sret, %"class.std::__1::ios_base"*) #2
 
 ; Function Attrs: nounwind
-declare void @_ZNSt3__16localeD1Ev(%"class.std::__1::locale"*) unnamed_addr #4
+declare void @_ZNSt3__16localeD1Ev(%"class.std::__1::locale"*) unnamed_addr #3
 
-declare %"class.std::__1::locale::facet"* @_ZNKSt3__16locale9use_facetERNS0_2idE(%"class.std::__1::locale"*, %"class.std::__1::locale::id"* dereferenceable(16)) #3
+declare %"class.std::__1::locale::facet"* @_ZNKSt3__16locale9use_facetERNS0_2idE(%"class.std::__1::locale"*, %"class.std::__1::locale::id"* dereferenceable(16)) #2
 
-declare void @_ZNSt3__18ios_base5clearEj(%"class.std::__1::ios_base"*, i32) #3
+declare void @_ZNSt3__18ios_base5clearEj(%"class.std::__1::ios_base"*, i32) #2
 
 ; Function Attrs: nounwind
-declare i64 @strlen(i8*) #4
+declare i64 @strlen(i8*) #3
 
 attributes #0 = { noinline optnone ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
 attributes #1 = { noinline nounwind optnone ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #2 = { noinline norecurse nounwind optnone ssp uwtable "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #3 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #4 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
-attributes #5 = { noinline noreturn nounwind }
-attributes #6 = { argmemonly nounwind }
-attributes #7 = { nounwind }
-attributes #8 = { noreturn nounwind }
+attributes #2 = { "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #3 = { nounwind "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "less-precise-fpmad"="false" "no-frame-pointer-elim"="true" "no-frame-pointer-elim-non-leaf" "no-infs-fp-math"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="false" "stack-protector-buffer-size"="8" "target-cpu"="penryn" "target-features"="+cx16,+fxsr,+mmx,+sahf,+sse,+sse2,+sse3,+sse4.1,+ssse3,+x87" "unsafe-fp-math"="false" "use-soft-float"="false" }
+attributes #4 = { noinline noreturn nounwind }
+attributes #5 = { argmemonly nounwind }
+attributes #6 = { nounwind }
+attributes #7 = { noreturn nounwind }
 
 !llvm.module.flags = !{!0, !1}
 !llvm.ident = !{!2}

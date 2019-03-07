@@ -2,11 +2,6 @@
 // Created by lisong on 2019-03-05.
 //
 #include <iostream>
-using namespace std;
-void demo() {
-    cout << "function is call!\n";
-
-}
 int func(int x) {
     return x + 2;
 }

@@ -1,1 +1,2 @@
-add_library(utils SHARED utils.cpp)
+LINK_LIBRARIES(LLVM)
+ADD_LIBRARY(utils SHARED utils.cpp)
