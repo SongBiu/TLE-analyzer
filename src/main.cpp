@@ -4,21 +4,20 @@
 // block if condition插入指令，记录condition的true/false，还有位置
 // 示例程序跑一下
 // */
-#include <FunctionAnalyzer.h>
+#include "LoopAnalyzer.h"
 #include <string>
 #include <llvm/IRReader/IRReader.h>
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/IR/LegacyPassManager.h>
 using namespace llvm;
 using namespace std;
-char FunctionAnalyzer::pid = 0;
 int main() {
     string name = "../resources/test.ll";
     LLVMContext context;
     SMDiagnostic Err;
     unique_ptr<Module> module(parseIRFile(name, Err, context));
     legacy::PassManager PM;
-    PM.add(new FunctionAnalyzer());
+    PM.add(new LoopAnalyzer());
     PM.run(*module);
     return 0;
 }
