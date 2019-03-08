@@ -1,57 +1,24 @@
-#include <llvm/ExecutionEngine/ExecutionEngine.h>
-#include <llvm/ExecutionEngine/MCJIT.h>
-#include <llvm/IR/BasicBlock.h>
-#include <llvm/IR/IRBuilder.h>
-#include <llvm/IR/Module.h>
-#include <llvm/IR/Type.h>
-#include <llvm/IRReader/IRReader.h>
-#include <llvm/Pass.h>
-#include <llvm/Support/SourceMgr.h>
-#include <llvm/Support/TargetSelect.h>
-#include <llvm/Support/Timer.h>
-#include <llvm/Support/raw_ostream.h>
-#include <llvm/Transforms/Utils/Cloning.h>
-#include <memory>
+// /*
+// insert Function
+// 找到for loop，记录开始地址（TODO）
+// block if condition插入指令，记录condition的true/false，还有位置
+// 示例程序跑一下
+// */
+#include <FunctionAnalyzer.h>
 #include <string>
-
+#include <llvm/IRReader/IRReader.h>
+#include <llvm/Support/SourceMgr.h>
+#include <llvm/IR/LegacyPassManager.h>
 using namespace llvm;
 using namespace std;
-
-unique_ptr<ExecutionEngine> getExecuteEngine(unique_ptr<Module> module) {
-    string error;
-    EngineBuilder engineBuilder(move(module));
-    engineBuilder.setErrorStr(&error);
-    engineBuilder.setEngineKind(EngineKind::JIT);
-    unique_ptr<ExecutionEngine> ee(engineBuilder.create());
-    if (!ee) {
-        outs() << error << "\n";
-        return nullptr;
-    }
-    return ee;
-}
-
-void insertFunctionToModule(Function* function, unique_ptr<Module> module) {
-    function->removeFromParent();
-    module->getFunctionList().push_front(function);
-}
-
+char FunctionAnalyzer::pid = 0;
 int main() {
-    InitializeNativeTarget();
-    InitializeAllAsmParsers();
-    InitializeAllAsmPrinters();
     string name = "../resources/test.ll";
     LLVMContext context;
     SMDiagnostic Err;
-    unique_ptr<Module> test(parseIRFile(name, Err, context));
-    unique_ptr<Module> functionLibs(parseIRFile("../resources/functionLibs.ll", Err, context));
-    Function *mainF = test->getFunction("main");
-    Function *demoF = functionLibs->getFunction("_Z4demov");
-    insertFunctionToModule(demoF, move(test));
-    Instruction* instruction = &*(mainF->getEntryBlock().getInstList().begin());
-    IRBuilder<> builder(instruction);
-    builder.CreateCall(demoF, None);
-    outs() << *demoF << "\n";
-    auto ee(getExecuteEngine(move(test)));
-    ee->runFunctionAsMain(mainF, vector<string>(), NULL);
+    unique_ptr<Module> module(parseIRFile(name, Err, context));
+    legacy::PassManager PM;
+    PM.add(new FunctionAnalyzer());
+    PM.run(*module);
     return 0;
 }

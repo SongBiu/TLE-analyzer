@@ -5,14 +5,16 @@
 int func(int x) {
     return x + 2;
 }
+void demo() {
+    std::cout << "function is called\n";
+}
 int main() {
-    // func(2);
-    // int x = func(2);
-    // if (x < 1) {
-    //     x = func(2);
-    // } else {
-    //     x = func(1);
-    // }
-    // cout << "hello world" << endl;
+    int k = 50;
+    for (int i = 0; i < 100; i++) {
+        if (3 * i > k) {
+            break;
+        }
+        k++;
+    } 
     return 0;
 }
