@@ -17,6 +17,7 @@ int main() {
     SMDiagnostic Err;
     unique_ptr<Module> module(parseIRFile(name, Err, context));
     legacy::PassManager PM;
+    PM.add(new LoopInfoWrapperPass());
     PM.add(new LoopAnalyzer());
     PM.run(*module);
     return 0;

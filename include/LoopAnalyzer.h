@@ -12,8 +12,8 @@ class LoopAnalyzer: public FunctionPass {
 public:
     static char pid;
     LoopAnalyzer(): FunctionPass(pid) {};
-    void getAnalysisUsage(AnalysisUsage &AU);
-    bool runOnFunction(Function & F);
+    virtual void getAnalysisUsage(AnalysisUsage &AU) const override;
+    bool runOnFunction(Function & F) override;
 };
 char LoopAnalyzer::pid = 0;
 #endif
