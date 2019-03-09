@@ -3,4 +3,4 @@ int func(int x) {
         x++;
     }
     return x;
-}
+};

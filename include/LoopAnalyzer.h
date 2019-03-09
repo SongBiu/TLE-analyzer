@@ -14,6 +14,9 @@ public:
     LoopAnalyzer(): FunctionPass(pid) {};
     virtual void getAnalysisUsage(AnalysisUsage &AU) const override;
     bool runOnFunction(Function & F) override;
+
+private:
+    BasicBlock* getHeaderOfLoop(Loop *loop) const;
 };
 char LoopAnalyzer::pid = 0;
 #endif
