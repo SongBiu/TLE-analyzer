@@ -1,14 +1,14 @@
-#include "LoopAnalyzer.h"
-void LoopAnalyzer::getAnalysisUsage(AnalysisUsage &AU) const {
+#include "LoopFinder.h"
+void LoopFinder::getAnalysisUsage(AnalysisUsage &AU) const {
     AU.setPreservesCFG();
     AU.addRequired<LoopInfoWrapperPass>();
 }
-bool LoopAnalyzer::runOnFunction(Function &F) {
-    LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
-    for (LoopInfo::iterator currentLoop = loopInfo.begin();
-         currentLoop != loopInfo.end(); currentLoop++) {
-             outs() << *getHeaderOfLoop(*currentLoop) << "\n";
-    }
+bool LoopFinder::runOnFunction(Function &F) {
+    // LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+    // for (LoopInfo::iterator currentLoop = loopInfo.begin();
+    //      currentLoop != loopInfo.end(); currentLoop++) {
+    //          outs() << *getHeaderOfLoop(*currentLoop) << "\n";
+    // }
     // for (auto currentBasicBlock = F.getBasicBlockList().begin();
     //      currentBasicBlock != F.getBasicBlockList().end();
     //      currentBasicBlock++) {
@@ -24,6 +24,6 @@ bool LoopAnalyzer::runOnFunction(Function &F) {
     return false;
 };
 
-BasicBlock* LoopAnalyzer::getHeaderOfLoop(Loop* loop) const {
+BasicBlock* LoopFinder::getHeaderOfLoop(Loop* loop) const {
     return loop->getHeader();
 }

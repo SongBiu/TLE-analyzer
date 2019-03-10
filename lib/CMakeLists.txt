@@ -1,4 +1,4 @@
 LINK_LIBRARIES(LLVM)
 ADD_LIBRARY(util SHARED util.cpp)
-ADD_LIBRARY(LoopAnalyzer SHARED LoopAnalyzer.cpp)
-TARGET_LINK_LIBRARIES(LoopAnalyzer util)
+ADD_LIBRARY(LoopFinder SHARED LoopFinder.cpp)
+TARGET_LINK_LIBRARIES(LoopFinder util)

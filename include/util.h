@@ -4,6 +4,8 @@
 #include <llvm/ExecutionEngine/MCJIT.h>
 #include <llvm/IR/Module.h>
 #include <llvm/Support/TargetSelect.h>
+#include <string>
+#include <cstdlib>
 using namespace std;
 using namespace llvm;
 class Util {
@@ -16,5 +18,6 @@ class Util {
 
     static void initTarget();
 
+    static void linkFunctionLibs(string IRName);
 };
 #endif

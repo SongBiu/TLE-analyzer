@@ -23,3 +23,13 @@ void Util::initTarget() {
     InitializeAllAsmParsers();
     InitializeAllAsmPrinters();
 }
+
+void Util::linkFunctionLibs(string IRName) {
+    string command = "llvm-link " + IRName + " ../resources/functionLibs.ll -o " + IRName;
+    try {
+        system(command.c_str());
+    }
+    catch (exception e) {
+        outs() << "skip link\n";
+    }
+}

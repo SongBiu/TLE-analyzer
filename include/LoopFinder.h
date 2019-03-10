@@ -1,5 +1,5 @@
-#ifndef LOOPANALYZER_H
-#define LOOPANALYZER_H
+#ifndef LOOPFINDER_H
+#define LOOPFINDER_H
 #include <llvm/Pass.h>
 #include <llvm/IR/Function.h>
 #include <llvm/Analysis/LoopInfo.h>
@@ -8,15 +8,15 @@
 #include <cstring>
 #include "util.h"
 using namespace llvm;
-class LoopAnalyzer: public FunctionPass {
+class LoopFinder: public FunctionPass {
 public:
     static char pid;
-    LoopAnalyzer(): FunctionPass(pid) {};
+    LoopFinder(): FunctionPass(pid) {};
     virtual void getAnalysisUsage(AnalysisUsage &AU) const override;
     bool runOnFunction(Function & F) override;
 
 private:
     BasicBlock* getHeaderOfLoop(Loop *loop) const;
 };
-char LoopAnalyzer::pid = 0;
+char LoopFinder::pid = 0;
 #endif
