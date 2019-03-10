@@ -2,6 +2,7 @@
 #define LOOPFINDER_H
 #include <llvm/Pass.h>
 #include <llvm/IR/Function.h>
+#include <llvm/IR/IRBuilder.h>
 #include <llvm/Analysis/LoopInfo.h>
 #include <llvm/Support/raw_ostream.h>
 #include <llvm/PassAnalysisSupport.h>

@@ -1,29 +1,25 @@
-#include "LoopFinder.h"
+#include "loopFinder.h"
 void LoopFinder::getAnalysisUsage(AnalysisUsage &AU) const {
     AU.setPreservesCFG();
     AU.addRequired<LoopInfoWrapperPass>();
 }
 bool LoopFinder::runOnFunction(Function &F) {
-    // LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
-    // for (LoopInfo::iterator currentLoop = loopInfo.begin();
-    //      currentLoop != loopInfo.end(); currentLoop++) {
-    //          outs() << *getHeaderOfLoop(*currentLoop) << "\n";
-    // }
-    // for (auto currentBasicBlock = F.getBasicBlockList().begin();
-    //      currentBasicBlock != F.getBasicBlockList().end();
-    //      currentBasicBlock++) {
-    //     for (auto currentInstruction =
-    //     currentBasicBlock->getInstList().begin();
-    //          currentInstruction != currentBasicBlock->getInstList().end();
-    //          currentInstruction++) {
-    //         if (!strcmp(currentInstruction->getOpcodeName(), "br")) {
-    //             outs() << *currentInstruction << "\n";
-    //         }
-    //     }
-    // }
+    if (F.getName() == "_Z4demov") {
+        return false;
+    }
+    Function *demo = F.getParent()->getFunction("_Z4demov");
+    LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+    for (LoopInfo::iterator loop = loopInfo.begin(); loop != loopInfo.end();
+         loop++) {
+        BasicBlock *basicBlock = getHeaderOfLoop(*loop);
+        Instruction *instruction = &*(basicBlock->getInstList().begin());
+        IRBuilder<> builder(instruction);
+        builder.CreateCall(demo, None);
+    }
+    // outs() << F.getName() << "\n";
     return false;
 };
 
-BasicBlock* LoopFinder::getHeaderOfLoop(Loop* loop) const {
+BasicBlock *LoopFinder::getHeaderOfLoop(Loop *loop) const {
     return loop->getHeader();
 }
