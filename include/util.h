@@ -1,11 +1,14 @@
 #ifndef UTILS_H
 #define UTILS_H
+#include <cstdlib>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
 #include <llvm/ExecutionEngine/MCJIT.h>
 #include <llvm/IR/Module.h>
 #include <llvm/Support/TargetSelect.h>
+#include <llvm/Analysis/LoopInfo.h>
 #include <string>
-#include <cstdlib>
+#include <vector>
+#include <map>
 using namespace std;
 using namespace llvm;
 class Util {
@@ -19,5 +22,9 @@ class Util {
     static void initTarget();
 
     static void linkFunctionLibs(string IRName);
+
+    static vector<string> nullArgs();
+
+    static map<Loop*, int> loopCount;
 };
 #endif

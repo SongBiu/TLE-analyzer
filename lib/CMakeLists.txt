@@ -1,7 +1,6 @@
 LINK_LIBRARIES(LLVM)
 ADD_LIBRARY(util SHARED util.cpp)
 ADD_LIBRARY(loopFinder SHARED loopFinder.cpp)
-ADD_LIBRARY(engine SHARED engine.cpp)
 ADD_LIBRARY(moduleManager SHARED moduleManager.cpp)
 TARGET_LINK_LIBRARIES(loopFinder util)
-TARGET_LINK_LIBRARIES(engine loopFinder)
+TARGET_LINK_LIBRARIES(moduleManager loopFinder)

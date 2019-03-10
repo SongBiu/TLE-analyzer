@@ -31,3 +31,7 @@ void Util::linkFunctionLibs(string IRName) {
     system(command.c_str());
     outs() << "……linking is over\n\n";
 }
+
+vector<string> Util::nullArgs() {
+    return vector<string>();
+}

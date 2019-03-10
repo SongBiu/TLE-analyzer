@@ -5,21 +5,18 @@
 // 示例程序跑一下
 // */
 #include "loopFinder.h"
-#include "util.h"
-#include "engine.h"
 #include "moduleManager.h"
-#include <vector>
+#include "util.h"
+#include <llvm/Analysis/LoopAccessAnalysis.h>
 using namespace llvm;
 using namespace std;
 int main() {
     Util::initTarget();
     string name = "../resources/test.ll";
     Util::linkFunctionLibs(name);
-    ModuleManager* moduleManager = new ModuleManager();
-    unique_ptr<Module> module(moduleManager->readModule(name));
-    Engine* engine = new Engine();
-    engine->run(move(module));
-    unique_ptr<ExecutionEngine> executionEngine = Util::getExecuteEngine(move(module));
-    executionEngine->runFunctionAsMain(module->getFunction("main"), vector<string>(), NULL);
+    ModuleManager *moduleManager = new ModuleManager();
+    moduleManager->readModule(name);
+    moduleManager->runLoopFinder();
+    // moduleManager->runFunction("main");
     return 0;
 }

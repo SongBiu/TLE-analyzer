@@ -1,5 +1,5 @@
-#ifndef LOOPFINDER_H
-#define LOOPFINDER_H
+#ifndef LOOP_FINDER_H
+#define LOOP_FINDER_H
 #include <llvm/Pass.h>
 #include <llvm/IR/Function.h>
 #include <llvm/IR/IRBuilder.h>
