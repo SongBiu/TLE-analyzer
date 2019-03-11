@@ -35,3 +35,9 @@ void Util::linkFunctionLibs(string IRName) {
 vector<string> Util::nullArgs() {
     return vector<string>();
 }
+
+void Util::insertCallInBasicBlock(BasicBlock* basicBlock, Function* call) {
+    Instruction* entryInstruction = &*basicBlock->getInstList().begin();
+    IRBuilder<> builder(entryInstruction);
+    builder.CreateCall(call, None);
+}

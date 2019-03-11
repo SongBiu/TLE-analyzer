@@ -17,7 +17,6 @@ public:
     bool runOnFunction(Function & F) override;
 
 private:
-    BasicBlock* getHeaderOfLoop(Loop *loop) const;
 };
 char LoopFinder::pid = 0;
 #endif

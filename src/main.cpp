@@ -17,6 +17,6 @@ int main() {
     ModuleManager *moduleManager = new ModuleManager();
     moduleManager->readModule(name);
     moduleManager->runLoopFinder();
-    // moduleManager->runFunction("main");
+    moduleManager->runFunction("main");
     return 0;
 }

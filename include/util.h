@@ -6,6 +6,8 @@
 #include <llvm/IR/Module.h>
 #include <llvm/Support/TargetSelect.h>
 #include <llvm/Analysis/LoopInfo.h>
+#include <llvm/IR/BasicBlock.h>
+#include <llvm/IR/IRBuilder.h>
 #include <string>
 #include <vector>
 #include <map>
@@ -25,6 +27,7 @@ class Util {
 
     static vector<string> nullArgs();
 
-    static map<Loop*, int> loopCount;
+    static void insertCallInBasicBlock(BasicBlock* basicBlock, Function* call);
+
 };
 #endif

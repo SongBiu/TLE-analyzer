@@ -1,11 +1,12 @@
 #include <iostream>
-void demo() {
-    std::cout << "function is called\n";
-}
+int count;
 void loopInit() {
-    static int count;
+    std::cout << "the loop init!\n";
     count = 0;
 }
 void loopRun() {
     count++;
+}
+void loopEnd() {
+    std::cout << "the loop run " << count << " times\n";
 }

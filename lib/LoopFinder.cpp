@@ -7,20 +7,18 @@ bool LoopFinder::runOnFunction(Function &F) {
     if (F.getName() != "main") {
         return false;
     }
-    Function *demo = F.getParent()->getFunction("_Z4demov");
+    Function *loopInit = F.getParent()->getFunction("_Z8loopInitv");
+    Function *loopRun = F.getParent()->getFunction("_Z7loopRunv");
+    Function *loopEnd = F.getParent()->getFunction("_Z7loopEndv");
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (LoopInfo::iterator loop = loopInfo.begin(); loop != loopInfo.end();
          loop++) {
-        outs() << "loop is "  << (*loop) << "\n";
-        BasicBlock *basicBlock = getHeaderOfLoop(*loop);
-        Instruction *instruction = &*(basicBlock->getInstList().begin());
-        IRBuilder<> builder(instruction);
-        builder.CreateCall(demo, None);
+        BasicBlock *preHeader = (*loop)->getLoopPreheader();
+        BasicBlock *header = (*loop)->getHeader();
+        BasicBlock *exitBB = (*loop)->getExitBlock();
+        Util::insertCallInBasicBlock(preHeader, loopInit);
+        Util::insertCallInBasicBlock(header, loopRun);
+        Util::insertCallInBasicBlock(exitBB, loopEnd);
     }
-    outs() << F.getName() << "\n";
-    return false;
+    return true;
 };
-
-BasicBlock *LoopFinder::getHeaderOfLoop(Loop *loop) const {
-    return loop->getHeader();
-}
