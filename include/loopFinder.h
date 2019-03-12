@@ -16,6 +16,8 @@ class LoopFinder : public FunctionPass {
 
   private:
     void markLoopInFunction(Function &F, Loop *loop);
+
+    void dumpBranchRuntime(vector<BasicBlock *> basicBlocks);
 };
 char LoopFinder::pid = 0;
 #endif

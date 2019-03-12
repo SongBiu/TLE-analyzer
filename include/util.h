@@ -15,6 +15,8 @@ using namespace std;
 using namespace llvm;
 class Util {
   public:
+    static const int brOpCode = 2;
+    static const int brTargetOpNum = 3;
     static unique_ptr<ExecutionEngine>
     getExecuteEngine(unique_ptr<Module> module);
 
