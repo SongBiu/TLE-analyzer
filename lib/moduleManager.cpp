@@ -5,6 +5,7 @@ unique_ptr<Module> ModuleManager::getModule() {
 
 void ModuleManager::readModule(string name) {
     module = move(parseIRFile(name, Err, context));
+    runLoopFinder();
 }
 
 void ModuleManager::runFunction(string functionName) {

@@ -7,7 +7,6 @@
 #include "loopFinder.h"
 #include "moduleManager.h"
 #include "util.h"
-#include <llvm/Analysis/LoopAccessAnalysis.h>
 using namespace llvm;
 using namespace std;
 int main() {
@@ -16,7 +15,6 @@ int main() {
     Util::linkFunctionLibs(name);
     ModuleManager *moduleManager = new ModuleManager();
     moduleManager->readModule(name);
-    moduleManager->runLoopFinder();
     moduleManager->runFunction("main");
     return 0;
 }
