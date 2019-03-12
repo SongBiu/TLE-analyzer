@@ -9,24 +9,24 @@ bool LoopFinder::runOnFunction(Function &F) {
     }
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (Loop *loop : loopInfo) {
-        markLoopInFunction(F, loop);
-        dumpBranchRuntime(loop->getBlocksVector());
+        markLoopInFunction(F, &loop);
+        // dumpBranchRuntime(loop->getBlocksVector());
     }
     return true;
 };
 
-void LoopFinder::markLoopInFunction(Function &F, Loop *loop) {
-    Function *loopInit = F.getParent()->getFunction("_Z8loopInitv");
-    BasicBlock *preHeader = loop->getLoopPreheader();
-    Util::insertCallInBasicBlock(preHeader, loopInit);
+void LoopFinder::markLoopInFunction(Function &F, Loop **loop) {
+    Function *loopInit = F.getParent()->getFunction(Util::functionLoopInit);
+    BasicBlock *preHeader = (*loop)->getLoopPreheader();
+    Util::insertCallInBasicBlock(preHeader, loopInit, loop);
 
-    Function *loopRun = F.getParent()->getFunction("_Z7loopRunv");
-    BasicBlock *header = loop->getHeader();
-    Util::insertCallInBasicBlock(header, loopRun);
+    Function *loopRun = F.getParent()->getFunction(Util::functionLoopRun);
+    BasicBlock *header = (*loop)->getHeader();
+    Util::insertCallInBasicBlock(header, loopRun, loop);
 
-    Function *loopEnd = F.getParent()->getFunction("_Z7loopEndv");
-    BasicBlock *exitBB = loop->getExitBlock();
-    Util::insertCallInBasicBlock(exitBB, loopEnd);
+    Function *loopExit = F.getParent()->getFunction(Util::functionLoopExit);
+    BasicBlock *exitBB = (*loop)->getExitBlock();
+    Util::insertCallInBasicBlock(exitBB, loopExit, loop);
 }
 
 void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
@@ -34,15 +34,13 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
         for (Instruction &instruction : *basicBlock) {
             if (instruction.getOpcode() == Util::brOpCode &&
                 instruction.getNumOperands() == Util::brTargetOpNum) {
-                outs() << "--------info-------------\n";
-                outs() << instruction << ": " << instruction.getOpcode()
-                       << "\n";
-                outs() << "--------args-------------\n";
-                for (int i = 0; i < instruction.getNumOperands(); i++) {
-                    outs() << instruction.getOperand(i) << ": "
-                           << *instruction.getOperand(i) << "\n";
-                }
-                outs() << "--------over-------------\n";
+                // IRBuilder<> builder(&instruction);
+                // vector<Value *> argContainer;
+                // argContainer.push_back(instruction.getOperand(0));
+                // ArrayRef<Value *> args(argContainer);
+                // Function *f = basicBlock->getParent()->getParent()->getFunction(
+                    // "_Z6branchb");
+                // builder.CreateCall(f, args);
             }
         }
     }

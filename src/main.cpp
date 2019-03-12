@@ -1,9 +1,3 @@
-// /*
-// insert Function
-// 找到for loop，记录开始地址（TODO）
-// block if condition插入指令，记录condition的true/false，还有位置
-// 示例程序跑一下
-// */
 #include "loopFinder.h"
 #include "moduleManager.h"
 #include "util.h"

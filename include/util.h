@@ -17,6 +17,10 @@ class Util {
   public:
     static const int brOpCode = 2;
     static const int brTargetOpNum = 3;
+    static const string functionLoopInit;
+    static const string functionLoopRun;
+    static const string functionLoopExit;
+    static const string functionBranch;
     static unique_ptr<ExecutionEngine>
     getExecuteEngine(unique_ptr<Module> module);
 
@@ -26,6 +30,7 @@ class Util {
 
     static vector<string> nullArgs();
 
-    static void insertCallInBasicBlock(BasicBlock *basicBlock, Function *call);
+    static void insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
+                                       Loop **loopPtr);
 };
 #endif

@@ -15,7 +15,7 @@ class LoopFinder : public FunctionPass {
     bool runOnFunction(Function &F) override;
 
   private:
-    void markLoopInFunction(Function &F, Loop *loop);
+    void markLoopInFunction(Function &F, Loop **loop);
 
     void dumpBranchRuntime(vector<BasicBlock *> basicBlocks);
 };
