@@ -21,16 +21,11 @@ class Util {
     static const string functionLoopRun;
     static const string functionLoopExit;
     static const string functionBranch;
-    static unique_ptr<ExecutionEngine>
-    getExecuteEngine(unique_ptr<Module> module);
+    static const string functionMain;
+    
 
     static void initTarget();
 
-    static void linkFunctionLibs(string IRName);
-
-    static vector<string> nullArgs();
-
-    static void insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
-                                       Loop **loopPtr);
+    
 };
 #endif

@@ -4,12 +4,13 @@ void LoopFinder::getAnalysisUsage(AnalysisUsage &AU) const {
     AU.addRequired<LoopInfoWrapperPass>();
 }
 bool LoopFinder::runOnFunction(Function &F) {
-    if (F.getName() != "main") {
+    outs() << F.getName() << "\n";
+    if (F.getName() != Util::functionMain) {
         return false;
     }
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (Loop *loop : loopInfo) {
-        markLoopInFunction(F, &loop);
+        // markLoopInFunction(F, &loop);
         // dumpBranchRuntime(loop->getBlocksVector());
     }
     return true;
@@ -18,15 +19,15 @@ bool LoopFinder::runOnFunction(Function &F) {
 void LoopFinder::markLoopInFunction(Function &F, Loop **loop) {
     Function *loopInit = F.getParent()->getFunction(Util::functionLoopInit);
     BasicBlock *preHeader = (*loop)->getLoopPreheader();
-    Util::insertCallInBasicBlock(preHeader, loopInit, loop);
+    insertCallInBasicBlock(preHeader, loopInit, loop);
 
     Function *loopRun = F.getParent()->getFunction(Util::functionLoopRun);
     BasicBlock *header = (*loop)->getHeader();
-    Util::insertCallInBasicBlock(header, loopRun, loop);
+    insertCallInBasicBlock(header, loopRun, loop);
 
     Function *loopExit = F.getParent()->getFunction(Util::functionLoopExit);
     BasicBlock *exitBB = (*loop)->getExitBlock();
-    Util::insertCallInBasicBlock(exitBB, loopExit, loop);
+    insertCallInBasicBlock(exitBB, loopExit, loop);
 }
 
 void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
@@ -44,4 +45,14 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
             }
         }
     }
+}
+
+void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
+                                  Loop **loopPtr) {
+    Instruction *entryInstruction = &*basicBlock->getInstList().begin();
+    vector<Value *> argContainer;
+    IRBuilder<> builder(entryInstruction);
+    // argContainer.push_back(builder.getInt64((uint64_t)*loopPtr));
+    ArrayRef<Value *> args(argContainer);
+    builder.CreateCall(call, args);
 }
