@@ -1,17 +1,21 @@
 #include "loopFinder.h"
+
 void LoopFinder::getAnalysisUsage(AnalysisUsage &AU) const {
     AU.setPreservesCFG();
     AU.addRequired<LoopInfoWrapperPass>();
 }
+
 bool LoopFinder::runOnFunction(Function &F) {
-    outs() << F.getName() << "\n";
     if (F.getName() != Util::functionMain) {
         return false;
     }
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (Loop *loop : loopInfo) {
-        // markLoopInFunction(F, &loop);
-        // dumpBranchRuntime(loop->getBlocksVector());
+        for (Loop *subLoop : loop->getSubLoops()) {
+            outs() << loop->getLoopID() << "\n";
+        }
+//         markLoopInFunction(F, &loop);
+//         dumpBranchRuntime(loop->getBlocksVector());
     }
     return true;
 };
@@ -39,8 +43,9 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
                 // vector<Value *> argContainer;
                 // argContainer.push_back(instruction.getOperand(0));
                 // ArrayRef<Value *> args(argContainer);
-                // Function *f = basicBlock->getParent()->getParent()->getFunction(
-                    // "_Z6branchb");
+                // Function *f =
+                // basicBlock->getParent()->getParent()->getFunction(
+                // "_Z6branchb");
                 // builder.CreateCall(f, args);
             }
         }
@@ -48,7 +53,7 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
 }
 
 void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
-                                  Loop **loopPtr) {
+                                        Loop **loopPtr) {
     Instruction *entryInstruction = &*basicBlock->getInstList().begin();
     vector<Value *> argContainer;
     IRBuilder<> builder(entryInstruction);

@@ -8,13 +8,13 @@
 #include <llvm/Support/raw_ostream.h>
 using namespace llvm;
 class LoopFinder : public FunctionPass {
-  public:
+public:
     static char pid;
     LoopFinder() : FunctionPass(pid){};
     virtual void getAnalysisUsage(AnalysisUsage &AU) const override;
     bool runOnFunction(Function &F) override;
 
-  private:
+private:
     void markLoopInFunction(Function &F, Loop **loop);
 
     void dumpBranchRuntime(vector<BasicBlock *> basicBlocks);

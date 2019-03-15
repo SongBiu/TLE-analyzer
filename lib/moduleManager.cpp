@@ -1,10 +1,18 @@
 #include "moduleManager.h"
-unique_ptr<Module> ModuleManager::getModule() { return move(module); }
+
+unique_ptr<Module> &ModuleManager::getModule() { return module; }
+
 Function *ModuleManager::getFunction(string name) {
     return module->getFunction(name);
 }
+
 void ModuleManager::readModule(string name) {
-    module = move(parseIRFile(name, Err, context));
+    if (!compileCxx2IR(name)) {
+        outs() << "compile " << name << "error\n";
+        return;
+    }
+    linkLib(name);
+    module = parseIRFile("../resources/" + name + ".ll", Err, context);
     if (!module) {
         Err.print("moduleManager.h", errs());
     }
@@ -22,8 +30,8 @@ ExecutionEngine *ModuleManager::loadExecuteEngine() {
 }
 
 void ModuleManager::runFunction(string functionName) {
-    ExecutionEngine *executionEngine = loadExecuteEngine();
     Function *function = module->getFunction(functionName);
+    ExecutionEngine *executionEngine = loadExecuteEngine();
     if (NULL == function) {
         outs() << "there is no " << functionName << " in module "
                << module->getName() << "\n";
@@ -43,4 +51,15 @@ void ModuleManager::dumpGlobalVariables() {
         outs() << '(' << *globalVariable.getType() << ") "
                << globalVariable.getName() << "\n";
     }
+}
+
+bool ModuleManager::compileCxx2IR(string name) {
+    string cmd = "clang++ -S -emit-llvm ../resources/" + name + ".cpp -o ../resources/" + name + ".ll";
+    return (0 == system(cmd.c_str()));
+}
+
+void ModuleManager::linkLib(string name) {
+    compileCxx2IR("lib/functionLib");
+    string cmd = "llvm-link ../resources/lib/functionLib.ll ../resources/" + name + ".ll -o " + name + ".ll";
+    system(cmd.c_str());
 }

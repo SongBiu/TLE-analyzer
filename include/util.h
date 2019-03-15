@@ -14,7 +14,7 @@
 using namespace std;
 using namespace llvm;
 class Util {
-  public:
+public:
     static const int brOpCode = 2;
     static const int brTargetOpNum = 3;
     static const string functionLoopInit;
@@ -22,10 +22,7 @@ class Util {
     static const string functionLoopExit;
     static const string functionBranch;
     static const string functionMain;
-    
 
     static void initTarget();
-
-    
 };
 #endif
