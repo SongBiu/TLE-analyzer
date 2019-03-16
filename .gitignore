@@ -4,3 +4,4 @@ build/
 .clang-format
 *.ll
 .idea/
+cmake-build-*/
