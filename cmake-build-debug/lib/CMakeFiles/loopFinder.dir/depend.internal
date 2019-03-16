@@ -6,9 +6,6 @@ lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
  ../include/util.h
  /Users/songl/OneDrive/TLE-analyzer/lib/loopFinder.cpp
  /usr/local/opt/llvm/include/llvm-c/DataTypes.h
- /usr/local/opt/llvm/include/llvm-c/ExecutionEngine.h
- /usr/local/opt/llvm/include/llvm-c/Target.h
- /usr/local/opt/llvm/include/llvm-c/TargetMachine.h
  /usr/local/opt/llvm/include/llvm-c/Types.h
  /usr/local/opt/llvm/include/llvm/ADT/APFloat.h
  /usr/local/opt/llvm/include/llvm/ADT/APInt.h
@@ -28,12 +25,9 @@ lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
  /usr/local/opt/llvm/include/llvm/ADT/SmallPtrSet.h
  /usr/local/opt/llvm/include/llvm/ADT/SmallString.h
  /usr/local/opt/llvm/include/llvm/ADT/SmallVector.h
- /usr/local/opt/llvm/include/llvm/ADT/StringExtras.h
  /usr/local/opt/llvm/include/llvm/ADT/StringMap.h
  /usr/local/opt/llvm/include/llvm/ADT/StringRef.h
- /usr/local/opt/llvm/include/llvm/ADT/StringSwitch.h
  /usr/local/opt/llvm/include/llvm/ADT/TinyPtrVector.h
- /usr/local/opt/llvm/include/llvm/ADT/Triple.h
  /usr/local/opt/llvm/include/llvm/ADT/Twine.h
  /usr/local/opt/llvm/include/llvm/ADT/ilist.h
  /usr/local/opt/llvm/include/llvm/ADT/ilist_base.h
@@ -45,15 +39,8 @@ lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
  /usr/local/opt/llvm/include/llvm/ADT/iterator_range.h
  /usr/local/opt/llvm/include/llvm/ADT/simple_ilist.h
  /usr/local/opt/llvm/include/llvm/Analysis/LoopInfo.h
- /usr/local/opt/llvm/include/llvm/Config/AsmParsers.def
- /usr/local/opt/llvm/include/llvm/Config/AsmPrinters.def
- /usr/local/opt/llvm/include/llvm/Config/Disassemblers.def
- /usr/local/opt/llvm/include/llvm/Config/Targets.def
  /usr/local/opt/llvm/include/llvm/Config/abi-breaking.h
  /usr/local/opt/llvm/include/llvm/Config/llvm-config.h
- /usr/local/opt/llvm/include/llvm/ExecutionEngine/ExecutionEngine.h
- /usr/local/opt/llvm/include/llvm/ExecutionEngine/JITSymbol.h
- /usr/local/opt/llvm/include/llvm/ExecutionEngine/MCJIT.h
  /usr/local/opt/llvm/include/llvm/IR/Argument.h
  /usr/local/opt/llvm/include/llvm/IR/Attributes.h
  /usr/local/opt/llvm/include/llvm/IR/Attributes.inc
@@ -99,9 +86,6 @@ lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
  /usr/local/opt/llvm/include/llvm/IR/Value.h
  /usr/local/opt/llvm/include/llvm/IR/ValueHandle.h
  /usr/local/opt/llvm/include/llvm/InitializePasses.h
- /usr/local/opt/llvm/include/llvm/MC/MCTargetOptions.h
- /usr/local/opt/llvm/include/llvm/Object/Binary.h
- /usr/local/opt/llvm/include/llvm/Object/Error.h
  /usr/local/opt/llvm/include/llvm/Pass.h
  /usr/local/opt/llvm/include/llvm/PassAnalysisSupport.h
  /usr/local/opt/llvm/include/llvm/PassInfo.h
@@ -113,37 +97,24 @@ lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
  /usr/local/opt/llvm/include/llvm/Support/AtomicOrdering.h
  /usr/local/opt/llvm/include/llvm/Support/CBindingWrapping.h
  /usr/local/opt/llvm/include/llvm/Support/Casting.h
- /usr/local/opt/llvm/include/llvm/Support/Chrono.h
  /usr/local/opt/llvm/include/llvm/Support/CodeGen.h
  /usr/local/opt/llvm/include/llvm/Support/CommandLine.h
  /usr/local/opt/llvm/include/llvm/Support/Compiler.h
  /usr/local/opt/llvm/include/llvm/Support/DataTypes.h
  /usr/local/opt/llvm/include/llvm/Support/Debug.h
  /usr/local/opt/llvm/include/llvm/Support/Endian.h
- /usr/local/opt/llvm/include/llvm/Support/Error.h
  /usr/local/opt/llvm/include/llvm/Support/ErrorHandling.h
- /usr/local/opt/llvm/include/llvm/Support/ErrorOr.h
- /usr/local/opt/llvm/include/llvm/Support/FileSystem.h
- /usr/local/opt/llvm/include/llvm/Support/Format.h
- /usr/local/opt/llvm/include/llvm/Support/FormatProviders.h
- /usr/local/opt/llvm/include/llvm/Support/FormatVariadicDetails.h
  /usr/local/opt/llvm/include/llvm/Support/Host.h
  /usr/local/opt/llvm/include/llvm/Support/MD5.h
  /usr/local/opt/llvm/include/llvm/Support/ManagedStatic.h
  /usr/local/opt/llvm/include/llvm/Support/MathExtras.h
  /usr/local/opt/llvm/include/llvm/Support/MemAlloc.h
- /usr/local/opt/llvm/include/llvm/Support/MemoryBuffer.h
- /usr/local/opt/llvm/include/llvm/Support/Mutex.h
- /usr/local/opt/llvm/include/llvm/Support/NativeFormatting.h
  /usr/local/opt/llvm/include/llvm/Support/Options.h
  /usr/local/opt/llvm/include/llvm/Support/PointerLikeTypeTraits.h
  /usr/local/opt/llvm/include/llvm/Support/RWMutex.h
  /usr/local/opt/llvm/include/llvm/Support/ReverseIteration.h
  /usr/local/opt/llvm/include/llvm/Support/SwapByteOrder.h
- /usr/local/opt/llvm/include/llvm/Support/TargetSelect.h
  /usr/local/opt/llvm/include/llvm/Support/Threading.h
  /usr/local/opt/llvm/include/llvm/Support/TypeName.h
  /usr/local/opt/llvm/include/llvm/Support/raw_ostream.h
  /usr/local/opt/llvm/include/llvm/Support/type_traits.h
- /usr/local/opt/llvm/include/llvm/Target/TargetMachine.h
- /usr/local/opt/llvm/include/llvm/Target/TargetOptions.h

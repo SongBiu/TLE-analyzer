@@ -12,7 +12,7 @@ void ModuleManager::readModule(string name) {
         return;
     }
     linkLib(name);
-    module = parseIRFile("../resources/" + name + ".ll", Err, context);
+    module = parseIRFile(name + ".ll", Err, context);
     if (!module) {
         Err.print("moduleManager.h", errs());
     }
@@ -51,6 +51,16 @@ void ModuleManager::dumpGlobalVariables() {
         outs() << '(' << *globalVariable.getType() << ") "
                << globalVariable.getName() << "\n";
     }
+}
+
+void ModuleManager::dumpModule() {
+    outs() << *module << "\n";
+}
+
+void ModuleManager::initTarget() {
+    InitializeNativeTarget();
+    InitializeAllAsmParsers();
+    InitializeAllAsmPrinters();
 }
 
 bool ModuleManager::compileCxx2IR(string name) {

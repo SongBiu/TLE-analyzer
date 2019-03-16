@@ -1,14 +1,13 @@
-#include "loopFinder.h"
 #include "moduleManager.h"
-#include "util.h"
+
 using namespace llvm;
 using namespace std;
+
 int main() {
-    Util::initTarget();
-    string name = "test";
     ModuleManager *moduleManager = new ModuleManager();
-    moduleManager->readModule(name);
+    moduleManager->readModule("test");
     moduleManager->runLoopFinder();
+    moduleManager->initTarget();
     moduleManager->runFunction();
     return 0;
 }
