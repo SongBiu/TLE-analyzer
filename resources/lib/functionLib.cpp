@@ -1,11 +1,11 @@
 #include <iostream>
 
-const int maxSize = 10000;
+const int MAXSIZE = 10000;
 
-struct hashMap {
+class hashMap {
 private:
-    void *keys[maxSize];
-    int values[maxSize];
+    void *keys[MAXSIZE];
+    int values[MAXSIZE];
     int size;
 public:
     hashMap() {
@@ -58,4 +58,8 @@ void loopRun(void *loopPointer) {
 
 void loopExit(void *loopPointer) {
     std::cout << "loop(" << loopPointer << ") run " << loopCounter.getCount(loopPointer) << " times\n";
+}
+
+void branch(bool condition) {
+    std::cout << "branch's condition is " << condition << std::endl;
 }

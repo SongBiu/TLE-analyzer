@@ -12,10 +12,10 @@ bool LoopFinder::runOnFunction(Function &F) {
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (Loop *loop : loopInfo) {
         markLoopInFunction(F, loop);
-//        dumpBranchRuntime(loop->getBlocksVector());
+        dumpBranchRuntime(loop->getBlocksVector());
         for (Loop *subLoop : loop->getSubLoops()) {
             markLoopInFunction(F, subLoop);
-//            dumpBranchRuntime(subLoop->getBlocksVector());
+            dumpBranchRuntime(subLoop->getBlocksVector());
         }
 
     }
@@ -42,14 +42,14 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
         for (Instruction &instruction : *basicBlock) {
             if (instruction.getOpcode() == Util::brOpCode &&
                 instruction.getNumOperands() == Util::brTargetOpNum) {
-                // IRBuilder<> builder(&instruction);
-                // vector<Value *> argContainer;
-                // argContainer.push_back(instruction.getOperand(0));
-                // ArrayRef<Value *> args(argContainer);
-                // Function *f =
-                // basicBlock->getParent()->getParent()->getFunction(
-                // "_Z6branchb");
-                // builder.CreateCall(f, args);
+                IRBuilder<> builder(&instruction);
+                vector<Value *> argContainer;
+                argContainer.push_back(instruction.getOperand(0));
+                ArrayRef<Value *> args(argContainer);
+                Function *f =
+                        basicBlock->getParent()->getParent()->getFunction(
+                                Util::functionBranch);
+                builder.CreateCall(f, args);
             }
         }
     }
