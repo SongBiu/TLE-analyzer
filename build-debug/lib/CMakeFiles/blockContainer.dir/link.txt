@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libblockContainer.a  CMakeFiles/blockContainer.dir/blockContainer.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libblockContainer.a

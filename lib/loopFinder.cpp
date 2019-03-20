@@ -9,16 +9,19 @@ bool LoopFinder::runOnFunction(Function &F) {
     if (F.getName() != Util::functionMain) {
         return false;
     }
+    LoopEscape *loopEscape = new LoopEscape();
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (Loop *loop : loopInfo) {
         markLoopInFunction(F, loop);
-        dumpBranchRuntime(loop->getBlocksVector());
+        loopEscape->escapeLoop(loop);
+//        dumpBranchRuntime(loop->getBlocksVector());
         for (Loop *subLoop : loop->getSubLoops()) {
             markLoopInFunction(F, subLoop);
-            dumpBranchRuntime(subLoop->getBlocksVector());
+            loopEscape->escapeLoop(subLoop);
+//            dumpBranchRuntime(subLoop->getBlocksVector());
         }
-
     }
+    delete loopEscape;
     return true;
 };
 
@@ -57,7 +60,7 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
 
 void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
                                         Loop *loop) {
-    Instruction *entryInstruction = &*basicBlock->getInstList().begin();
+    Instruction *entryInstruction = basicBlock->getFirstNonPHI();
     IRBuilder<> builder(entryInstruction);
     Value *args[] = {builder.getInt64((uint64_t) loop)};
     try {

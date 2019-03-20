@@ -34,6 +34,8 @@ public:
 
     void dumpModule();
 
+    void dumpBasicBlocks(StringRef functionName = "main");
+
     void initTarget();
 
 private:

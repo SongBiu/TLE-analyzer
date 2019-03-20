@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libloopEscape.a  CMakeFiles/loopEscape.dir/loopEscape.cpp.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libloopEscape.a

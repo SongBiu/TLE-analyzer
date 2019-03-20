@@ -7,7 +7,8 @@ int main() {
     ModuleManager *moduleManager = new ModuleManager();
     moduleManager->readModule("test");
     moduleManager->runLoopFinder();
-    moduleManager->initTarget();
-    moduleManager->runFunction();
+//    moduleManager->dumpModule();
+//    moduleManager->initTarget();
+//    moduleManager->runFunction();
     return 0;
 }

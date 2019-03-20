@@ -57,6 +57,13 @@ void ModuleManager::dumpModule() {
     outs() << *module << "\n";
 }
 
+void ModuleManager::dumpBasicBlocks(StringRef functionName) {
+    for (BasicBlock &basicBlock: *module->getFunction(functionName)) {
+        outs() << basicBlock << "\n";
+        outs() << "successor is " << basicBlock.getPrevNode()
+    }
+}
+
 void ModuleManager::initTarget() {
     InitializeNativeTarget();
     InitializeAllAsmParsers();

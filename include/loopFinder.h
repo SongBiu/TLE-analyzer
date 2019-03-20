@@ -2,6 +2,7 @@
 #define LOOP_FINDER_H
 
 #include "util.h"
+#include "loopEscape.h"
 #include <cstring>
 #include <llvm/IR/Function.h>
 #include <llvm/Pass.h>
