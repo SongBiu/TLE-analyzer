@@ -82,8 +82,8 @@ analyzer: src/CMakeFiles/analyzer.dir/build.make
 analyzer: lib/libmoduleManager.dylib
 analyzer: lib/libloopFinder.dylib
 analyzer: lib/libutil.dylib
-analyzer: lib/libloopEscape.a
-analyzer: lib/libblockContainer.a
+analyzer: lib/libloopEscape.dylib
+analyzer: lib/libblockContainer.dylib
 analyzer: src/CMakeFiles/analyzer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../analyzer"
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/analyzer.dir/link.txt --verbose=$(VERBOSE)

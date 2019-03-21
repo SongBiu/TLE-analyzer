@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake"
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.13.4/bin/cmake
 
 # The command to remove a file.
-RM = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E remove -f
+RM = /usr/local/Cellar/cmake/3.13.4/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -80,8 +80,8 @@ loopFinder_EXTERNAL_OBJECTS =
 lib/libloopFinder.dylib: lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
 lib/libloopFinder.dylib: lib/CMakeFiles/loopFinder.dir/build.make
 lib/libloopFinder.dylib: lib/libutil.dylib
-lib/libloopFinder.dylib: lib/libloopEscape.a
-lib/libloopFinder.dylib: lib/libblockContainer.a
+lib/libloopFinder.dylib: lib/libloopEscape.dylib
+lib/libloopFinder.dylib: lib/libblockContainer.dylib
 lib/libloopFinder.dylib: lib/CMakeFiles/loopFinder.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libloopFinder.dylib"
 	cd /Users/songl/OneDrive/TLE-analyzer/build-debug/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/loopFinder.dir/link.txt --verbose=$(VERBOSE)

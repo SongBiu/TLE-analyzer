@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/blockContainer.dir/blockContainer.cpp.o"
   "libblockContainer.pdb"
-  "libblockContainer.a"
+  "libblockContainer.dylib"
 )
 
 # Per-language clean rules from dependency scanning.

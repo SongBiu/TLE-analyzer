@@ -80,8 +80,8 @@ loopFinder_EXTERNAL_OBJECTS =
 lib/libloopFinder.dylib: lib/CMakeFiles/loopFinder.dir/loopFinder.cpp.o
 lib/libloopFinder.dylib: lib/CMakeFiles/loopFinder.dir/build.make
 lib/libloopFinder.dylib: lib/libutil.dylib
-lib/libloopFinder.dylib: lib/libloopEscape.a
-lib/libloopFinder.dylib: lib/libblockContainer.a
+lib/libloopFinder.dylib: lib/libloopEscape.dylib
+lib/libloopFinder.dylib: lib/libblockContainer.dylib
 lib/libloopFinder.dylib: lib/CMakeFiles/loopFinder.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libloopFinder.dylib"
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/loopFinder.dir/link.txt --verbose=$(VERBOSE)

@@ -81,8 +81,8 @@ lib/libmoduleManager.dylib: lib/CMakeFiles/moduleManager.dir/moduleManager.cpp.o
 lib/libmoduleManager.dylib: lib/CMakeFiles/moduleManager.dir/build.make
 lib/libmoduleManager.dylib: lib/libloopFinder.dylib
 lib/libmoduleManager.dylib: lib/libutil.dylib
-lib/libmoduleManager.dylib: lib/libloopEscape.a
-lib/libmoduleManager.dylib: lib/libblockContainer.a
+lib/libmoduleManager.dylib: lib/libloopEscape.dylib
+lib/libmoduleManager.dylib: lib/libblockContainer.dylib
 lib/libmoduleManager.dylib: lib/CMakeFiles/moduleManager.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmoduleManager.dylib"
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/moduleManager.dir/link.txt --verbose=$(VERBOSE)

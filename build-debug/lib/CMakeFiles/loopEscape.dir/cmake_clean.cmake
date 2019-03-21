@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/loopEscape.dir/loopEscape.cpp.o"
   "libloopEscape.pdb"
-  "libloopEscape.a"
+  "libloopEscape.dylib"
 )
 
 # Per-language clean rules from dependency scanning.

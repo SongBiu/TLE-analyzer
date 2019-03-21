@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake"
+CMAKE_COMMAND = /usr/local/Cellar/cmake/3.13.4/bin/cmake
 
 # The command to remove a file.
-RM = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E remove -f
+RM = /usr/local/Cellar/cmake/3.13.4/bin/cmake -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -82,8 +82,8 @@ analyzer: src/CMakeFiles/analyzer.dir/build.make
 analyzer: lib/libmoduleManager.dylib
 analyzer: lib/libloopFinder.dylib
 analyzer: lib/libutil.dylib
-analyzer: lib/libloopEscape.a
-analyzer: lib/libblockContainer.a
+analyzer: lib/libloopEscape.dylib
+analyzer: lib/libblockContainer.dylib
 analyzer: src/CMakeFiles/analyzer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable ../analyzer"
 	cd /Users/songl/OneDrive/TLE-analyzer/build-debug/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/analyzer.dir/link.txt --verbose=$(VERBOSE)
