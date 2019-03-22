@@ -5,3 +5,4 @@ build/
 *.ll
 .idea/
 cmake-build-*/
+build-*/
