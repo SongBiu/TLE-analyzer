@@ -125,6 +125,33 @@ analyzer/fast:
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f src/CMakeFiles/analyzer.dir/build.make src/CMakeFiles/analyzer.dir/build
 .PHONY : analyzer/fast
 
+__/include/defineAnalyzer.o: __/include/defineAnalyzer.cpp.o
+
+.PHONY : __/include/defineAnalyzer.o
+
+# target to build an object file
+__/include/defineAnalyzer.cpp.o:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f src/CMakeFiles/analyzer.dir/build.make src/CMakeFiles/analyzer.dir/__/include/defineAnalyzer.cpp.o
+.PHONY : __/include/defineAnalyzer.cpp.o
+
+__/include/defineAnalyzer.i: __/include/defineAnalyzer.cpp.i
+
+.PHONY : __/include/defineAnalyzer.i
+
+# target to preprocess a source file
+__/include/defineAnalyzer.cpp.i:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f src/CMakeFiles/analyzer.dir/build.make src/CMakeFiles/analyzer.dir/__/include/defineAnalyzer.cpp.i
+.PHONY : __/include/defineAnalyzer.cpp.i
+
+__/include/defineAnalyzer.s: __/include/defineAnalyzer.cpp.s
+
+.PHONY : __/include/defineAnalyzer.s
+
+# target to generate assembly for a file
+__/include/defineAnalyzer.cpp.s:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f src/CMakeFiles/analyzer.dir/build.make src/CMakeFiles/analyzer.dir/__/include/defineAnalyzer.cpp.s
+.PHONY : __/include/defineAnalyzer.cpp.s
+
 application.o: application.cpp.o
 
 .PHONY : application.o
@@ -161,6 +188,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... analyzer"
+	@echo "... __/include/defineAnalyzer.o"
+	@echo "... __/include/defineAnalyzer.i"
+	@echo "... __/include/defineAnalyzer.s"
 	@echo "... application.o"
 	@echo "... application.i"
 	@echo "... application.s"

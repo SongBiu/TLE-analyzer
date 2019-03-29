@@ -185,32 +185,32 @@ util/fast:
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/util.dir/build.make lib/CMakeFiles/util.dir/build
 .PHONY : util/fast
 
-blockContainer.o: blockContainer.cpp.o
+blockManager.o: blockManager.cpp.o
 
-.PHONY : blockContainer.o
+.PHONY : blockManager.o
 
 # target to build an object file
-blockContainer.cpp.o:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.o
-.PHONY : blockContainer.cpp.o
+blockManager.cpp.o:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockManager.cpp.o
+.PHONY : blockManager.cpp.o
 
-blockContainer.i: blockContainer.cpp.i
+blockManager.i: blockManager.cpp.i
 
-.PHONY : blockContainer.i
+.PHONY : blockManager.i
 
 # target to preprocess a source file
-blockContainer.cpp.i:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.i
-.PHONY : blockContainer.cpp.i
+blockManager.cpp.i:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockManager.cpp.i
+.PHONY : blockManager.cpp.i
 
-blockContainer.s: blockContainer.cpp.s
+blockManager.s: blockManager.cpp.s
 
-.PHONY : blockContainer.s
+.PHONY : blockManager.s
 
 # target to generate assembly for a file
-blockContainer.cpp.s:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.s
-.PHONY : blockContainer.cpp.s
+blockManager.cpp.s:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockManager.cpp.s
+.PHONY : blockManager.cpp.s
 
 loopEscape.o: loopEscape.cpp.o
 
@@ -333,9 +333,9 @@ help:
 	@echo "... loopFinder"
 	@echo "... blockContainer"
 	@echo "... util"
-	@echo "... blockContainer.o"
-	@echo "... blockContainer.i"
-	@echo "... blockContainer.s"
+	@echo "... blockManager.o"
+	@echo "... blockManager.i"
+	@echo "... blockManager.s"
 	@echo "... loopEscape.o"
 	@echo "... loopEscape.i"
 	@echo "... loopEscape.s"

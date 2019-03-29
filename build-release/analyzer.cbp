@@ -314,7 +314,13 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/blockContainer.cpp">
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/include/defineAnalyzer.cpp">
+			<Option target="analyzer"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/include/defineAnalyzer.h">
+			<Option target="analyzer"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/blockManager.cpp">
 			<Option target="blockContainer"/>
 		</Unit>
 		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/loopEscape.cpp">

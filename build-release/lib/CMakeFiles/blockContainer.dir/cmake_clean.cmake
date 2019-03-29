@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/blockContainer.dir/blockContainer.cpp.o"
+  "CMakeFiles/blockContainer.dir/blockManager.cpp.o"
   "libblockContainer.pdb"
   "libblockContainer.dylib"
 )

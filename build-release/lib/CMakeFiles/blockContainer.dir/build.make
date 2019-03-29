@@ -57,27 +57,27 @@ include lib/CMakeFiles/blockContainer.dir/progress.make
 # Include the compile flags for this target's objects.
 include lib/CMakeFiles/blockContainer.dir/flags.make
 
-lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.o: lib/CMakeFiles/blockContainer.dir/flags.make
-lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.o: ../lib/blockContainer.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.o"
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/blockContainer.dir/blockContainer.cpp.o -c /Users/songl/OneDrive/TLE-analyzer/lib/blockContainer.cpp
+lib/CMakeFiles/blockContainer.dir/blockManager.cpp.o: lib/CMakeFiles/blockContainer.dir/flags.make
+lib/CMakeFiles/blockContainer.dir/blockManager.cpp.o: ../lib/blockManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object lib/CMakeFiles/blockContainer.dir/blockManager.cpp.o"
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && /Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/blockContainer.dir/blockManager.cpp.o -c /Users/songl/OneDrive/TLE-analyzer/lib/blockManager.cpp
 
-lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/blockContainer.dir/blockContainer.cpp.i"
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/songl/OneDrive/TLE-analyzer/lib/blockContainer.cpp > CMakeFiles/blockContainer.dir/blockContainer.cpp.i
+lib/CMakeFiles/blockContainer.dir/blockManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/blockContainer.dir/blockManager.cpp.i"
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/songl/OneDrive/TLE-analyzer/lib/blockManager.cpp > CMakeFiles/blockContainer.dir/blockManager.cpp.i
 
-lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/blockContainer.dir/blockContainer.cpp.s"
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/songl/OneDrive/TLE-analyzer/lib/blockContainer.cpp -o CMakeFiles/blockContainer.dir/blockContainer.cpp.s
+lib/CMakeFiles/blockContainer.dir/blockManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/blockContainer.dir/blockManager.cpp.s"
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && /Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/songl/OneDrive/TLE-analyzer/lib/blockManager.cpp -o CMakeFiles/blockContainer.dir/blockManager.cpp.s
 
 # Object files for target blockContainer
 blockContainer_OBJECTS = \
-"CMakeFiles/blockContainer.dir/blockContainer.cpp.o"
+"CMakeFiles/blockContainer.dir/blockManager.cpp.o"
 
 # External object files for target blockContainer
 blockContainer_EXTERNAL_OBJECTS =
 
-lib/libblockContainer.dylib: lib/CMakeFiles/blockContainer.dir/blockContainer.cpp.o
+lib/libblockContainer.dylib: lib/CMakeFiles/blockContainer.dir/blockManager.cpp.o
 lib/libblockContainer.dylib: lib/CMakeFiles/blockContainer.dir/build.make
 lib/libblockContainer.dylib: lib/CMakeFiles/blockContainer.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libblockContainer.dylib"

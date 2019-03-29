@@ -2,6 +2,7 @@
 #define MODULE_MANAGER_H
 
 #include "loopFinder.h"
+#include "defineAnalyzer.h"
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/LegacyPassManager.h>
 #include <llvm/IR/Module.h>
@@ -29,6 +30,8 @@ public:
     void runFunction(string functionName = "main");
 
     void runLoopFinder();
+
+    void runDefineAnalyzer();
 
     void dumpGlobalVariables();
 

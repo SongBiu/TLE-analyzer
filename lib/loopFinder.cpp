@@ -1,8 +1,8 @@
 #include "loopFinder.h"
 
-void LoopFinder::getAnalysisUsage(AnalysisUsage &AU) const {
-    AU.setPreservesCFG();
-    AU.addRequired<LoopInfoWrapperPass>();
+void LoopFinder::getAnalysisUsage(AnalysisUsage &usage) const {
+    usage.setPreservesCFG();
+    usage.addRequired<LoopInfoWrapperPass>();
 }
 
 bool LoopFinder::runOnFunction(Function &F) {

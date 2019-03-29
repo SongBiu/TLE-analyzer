@@ -20,7 +20,7 @@ public:
 
     LoopFinder() : FunctionPass(pid) {};
 
-    virtual void getAnalysisUsage(AnalysisUsage &AU) const override;
+    virtual void getAnalysisUsage(AnalysisUsage &usage) const override;
 
     bool runOnFunction(Function &F) override;
 

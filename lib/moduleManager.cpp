@@ -1,3 +1,6 @@
+
+#include <moduleManager.h>
+
 #include "moduleManager.h"
 
 unique_ptr<Module> &ModuleManager::getModule() { return module; }
@@ -46,6 +49,13 @@ void ModuleManager::runLoopFinder() {
     PM.run(*module);
 }
 
+void ModuleManager::runDefineAnalyzer() {
+    legacy::PassManager PM;
+    PM.add(new LoopInfoWrapperPass());
+    PM.add(new DefineAnalyzer());
+    PM.run(*module);
+}
+
 void ModuleManager::dumpGlobalVariables() {
     for (GlobalVariable &globalVariable : module->getGlobalList()) {
         outs() << '(' << *globalVariable.getType() << ") "
@@ -60,7 +70,6 @@ void ModuleManager::dumpModule() {
 void ModuleManager::dumpBasicBlocks(StringRef functionName) {
     for (BasicBlock &basicBlock: *module->getFunction(functionName)) {
         outs() << basicBlock << "\n";
-        outs() << "successor is " << basicBlock.getPrevNode()
     }
 }
 
