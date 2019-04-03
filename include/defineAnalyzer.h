@@ -9,6 +9,8 @@
 #include <llvm/Analysis/LoopInfo.h>
 #include <llvm/PassAnalysisSupport.h>
 #include <llvm/Analysis/LoopInfo.h>
+#include <llvm/Support/raw_ostream.h>
+#include "util.h"
 
 using namespace llvm;
 
@@ -16,7 +18,7 @@ class DefineAnalyzer : public FunctionPass {
 public:
     static char pid;
 
-    DefineAnalyzer();
+    DefineAnalyzer() : FunctionPass(pid) {};
 
     virtual void getAnalysisUsage(AnalysisUsage &usage) const override;
 
@@ -25,5 +27,5 @@ public:
 private:
 };
 
-char DefineAnalyzer::pid = 0;
+char DefineAnalyzer::pid = 1;
 #endif //DEFINE_ANALYZER_H

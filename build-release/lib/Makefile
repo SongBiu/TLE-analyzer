@@ -39,10 +39,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake"
+CMAKE_COMMAND = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake"
 
 # The command to remove a file.
-RM = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E remove -f
+RM = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /Users/songl/OneDrive/TLE-analyzer/build-release
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	"/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake" -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	"/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
+	"/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -111,34 +111,19 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-lib/CMakeFiles/loopEscape.dir/rule:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/loopEscape.dir/rule
-.PHONY : lib/CMakeFiles/loopEscape.dir/rule
+lib/CMakeFiles/defineAnalyzer.dir/rule:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/defineAnalyzer.dir/rule
+.PHONY : lib/CMakeFiles/defineAnalyzer.dir/rule
 
 # Convenience name for target.
-loopEscape: lib/CMakeFiles/loopEscape.dir/rule
+defineAnalyzer: lib/CMakeFiles/defineAnalyzer.dir/rule
 
-.PHONY : loopEscape
+.PHONY : defineAnalyzer
 
 # fast build rule for target.
-loopEscape/fast:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/loopEscape.dir/build.make lib/CMakeFiles/loopEscape.dir/build
-.PHONY : loopEscape/fast
-
-# Convenience name for target.
-lib/CMakeFiles/moduleManager.dir/rule:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/moduleManager.dir/rule
-.PHONY : lib/CMakeFiles/moduleManager.dir/rule
-
-# Convenience name for target.
-moduleManager: lib/CMakeFiles/moduleManager.dir/rule
-
-.PHONY : moduleManager
-
-# fast build rule for target.
-moduleManager/fast:
-	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/moduleManager.dir/build.make lib/CMakeFiles/moduleManager.dir/build
-.PHONY : moduleManager/fast
+defineAnalyzer/fast:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/defineAnalyzer.dir/build.make lib/CMakeFiles/defineAnalyzer.dir/build
+.PHONY : defineAnalyzer/fast
 
 # Convenience name for target.
 lib/CMakeFiles/loopFinder.dir/rule:
@@ -169,6 +154,36 @@ blockContainer: lib/CMakeFiles/blockContainer.dir/rule
 blockContainer/fast:
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/build
 .PHONY : blockContainer/fast
+
+# Convenience name for target.
+lib/CMakeFiles/moduleManager.dir/rule:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/moduleManager.dir/rule
+.PHONY : lib/CMakeFiles/moduleManager.dir/rule
+
+# Convenience name for target.
+moduleManager: lib/CMakeFiles/moduleManager.dir/rule
+
+.PHONY : moduleManager
+
+# fast build rule for target.
+moduleManager/fast:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/moduleManager.dir/build.make lib/CMakeFiles/moduleManager.dir/build
+.PHONY : moduleManager/fast
+
+# Convenience name for target.
+lib/CMakeFiles/loopEscape.dir/rule:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f CMakeFiles/Makefile2 lib/CMakeFiles/loopEscape.dir/rule
+.PHONY : lib/CMakeFiles/loopEscape.dir/rule
+
+# Convenience name for target.
+loopEscape: lib/CMakeFiles/loopEscape.dir/rule
+
+.PHONY : loopEscape
+
+# fast build rule for target.
+loopEscape/fast:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/loopEscape.dir/build.make lib/CMakeFiles/loopEscape.dir/build
+.PHONY : loopEscape/fast
 
 # Convenience name for target.
 lib/CMakeFiles/util.dir/rule:
@@ -211,6 +226,33 @@ blockManager.s: blockManager.cpp.s
 blockManager.cpp.s:
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/blockContainer.dir/build.make lib/CMakeFiles/blockContainer.dir/blockManager.cpp.s
 .PHONY : blockManager.cpp.s
+
+defineAnalyzer.o: defineAnalyzer.cpp.o
+
+.PHONY : defineAnalyzer.o
+
+# target to build an object file
+defineAnalyzer.cpp.o:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/defineAnalyzer.dir/build.make lib/CMakeFiles/defineAnalyzer.dir/defineAnalyzer.cpp.o
+.PHONY : defineAnalyzer.cpp.o
+
+defineAnalyzer.i: defineAnalyzer.cpp.i
+
+.PHONY : defineAnalyzer.i
+
+# target to preprocess a source file
+defineAnalyzer.cpp.i:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/defineAnalyzer.dir/build.make lib/CMakeFiles/defineAnalyzer.dir/defineAnalyzer.cpp.i
+.PHONY : defineAnalyzer.cpp.i
+
+defineAnalyzer.s: defineAnalyzer.cpp.s
+
+.PHONY : defineAnalyzer.s
+
+# target to generate assembly for a file
+defineAnalyzer.cpp.s:
+	cd /Users/songl/OneDrive/TLE-analyzer/build-release && $(MAKE) -f lib/CMakeFiles/defineAnalyzer.dir/build.make lib/CMakeFiles/defineAnalyzer.dir/defineAnalyzer.cpp.s
+.PHONY : defineAnalyzer.cpp.s
 
 loopEscape.o: loopEscape.cpp.o
 
@@ -328,14 +370,18 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... loopEscape"
-	@echo "... moduleManager"
+	@echo "... defineAnalyzer"
 	@echo "... loopFinder"
 	@echo "... blockContainer"
+	@echo "... moduleManager"
+	@echo "... loopEscape"
 	@echo "... util"
 	@echo "... blockManager.o"
 	@echo "... blockManager.i"
 	@echo "... blockManager.s"
+	@echo "... defineAnalyzer.o"
+	@echo "... defineAnalyzer.i"
+	@echo "... defineAnalyzer.s"
 	@echo "... loopEscape.o"
 	@echo "... loopEscape.i"
 	@echo "... loopEscape.s"

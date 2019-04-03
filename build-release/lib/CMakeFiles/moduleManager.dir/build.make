@@ -34,10 +34,10 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake"
+CMAKE_COMMAND = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake"
 
 # The command to remove a file.
-RM = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/183.5429.37/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E remove -f
+RM = "/Users/songl/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/191.6183.77/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
@@ -80,9 +80,10 @@ moduleManager_EXTERNAL_OBJECTS =
 lib/libmoduleManager.dylib: lib/CMakeFiles/moduleManager.dir/moduleManager.cpp.o
 lib/libmoduleManager.dylib: lib/CMakeFiles/moduleManager.dir/build.make
 lib/libmoduleManager.dylib: lib/libloopFinder.dylib
-lib/libmoduleManager.dylib: lib/libutil.dylib
+lib/libmoduleManager.dylib: lib/libdefineAnalyzer.dylib
 lib/libmoduleManager.dylib: lib/libloopEscape.dylib
 lib/libmoduleManager.dylib: lib/libblockContainer.dylib
+lib/libmoduleManager.dylib: lib/libutil.dylib
 lib/libmoduleManager.dylib: lib/CMakeFiles/moduleManager.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/songl/OneDrive/TLE-analyzer/build-release/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared library libmoduleManager.dylib"
 	cd /Users/songl/OneDrive/TLE-analyzer/build-release/lib && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/moduleManager.dir/link.txt --verbose=$(VERBOSE)

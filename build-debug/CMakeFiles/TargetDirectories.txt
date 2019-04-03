@@ -2,10 +2,11 @@
 /Users/songl/OneDrive/TLE-analyzer/build-debug/CMakeFiles/edit_cache.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/rebuild_cache.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/edit_cache.dir
-/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/loopEscape.dir
-/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/moduleManager.dir
+/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/defineAnalyzer.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/loopFinder.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/blockContainer.dir
+/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/moduleManager.dir
+/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/loopEscape.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/lib/CMakeFiles/util.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/src/CMakeFiles/rebuild_cache.dir
 /Users/songl/OneDrive/TLE-analyzer/build-debug/src/CMakeFiles/edit_cache.dir
