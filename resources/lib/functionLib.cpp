@@ -2,64 +2,43 @@
 
 const int MAXSIZE = 10000;
 
-class hashMap {
+template <class K, class V>
+class HashMap {
 private:
-    void *keys[MAXSIZE];
-    int values[MAXSIZE];
+    K keys[MAXSIZE];
+    V values[MAXSIZE];
     int size;
 public:
-    hashMap() {
+    HashMap() {
         size = 0;
     }
 
-    void insert(void *loopAddress) {
-        keys[size] = loopAddress;
-        values[size] = 0;
+    void insert(K key, V value) {
+        keys[size] = key;
+        values[size] = value;
         size++;
     }
 
-    int getIndex(void *loopAddress) {
-        for (int i = 0; i < size; i++) {
-            if (keys[i] == loopAddress) {
-                return i;
+    V& get(K key) {
+        for (int i = 0; i < ; ++i) {
+            if (keys[i] == key) {
+                return values[i];
             }
         }
-        return -1;
+        throw "key not exists!";
     }
 
-    int getCount(void *loopAddress) {
-        int index = getIndex(loopAddress);
-        if (index == -1) {
-            return -1;
-        } else {
-            return values[index];
-        }
-    }
-
-    void addLoop(void *loopAddress) {
-        int index = getIndex(loopAddress);
-        if (index == -1) {
-            return;
-        } else {
-            values[index]++;
-        }
+    V& operator [] (K key) {
+        return get(key);
     }
 };
 
-hashMap loopCounter;
+template <class T
+class VariableTable
 
-void loopInit(void *loopPointer) {
-    loopCounter.insert(loopPointer);
-}
+HashMap *loopCounter = new HashMap();
+HashMap<void*, char*> *inVariable = new HashMap();
 
-void loopRun(void *loopPointer) {
-    loopCounter.addLoop(loopPointer);
-}
-
-void loopExit(void *loopPointer) {
-    std::cout << "loop(" << loopPointer << ") run " << loopCounter.getCount(loopPointer) << " times\n";
-}
-
-void branch(bool condition) {
-    std::cout << "branch's condition is " << condition << std::endl;
+void insertVariable(void *var, ) {
+    inVariable->get()
 }

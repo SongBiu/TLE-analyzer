@@ -1,8 +1,6 @@
 //
 // Created by lisong on 2019-03-19.
 //
-#include <blockManager.h>
-
 #include "blockManager.h"
 
 void BlockManager::insertBlockAfterBlock(BasicBlock *from, BasicBlock *inserter) {

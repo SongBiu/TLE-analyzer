@@ -2,6 +2,8 @@
 // Created by lisong on 2019-04-01.
 //
 #include <stdio.h>
+#include <string>
+using namespace std;
 
 int joseph(int n)
 {
@@ -30,6 +32,7 @@ int joseph(int n)
 int main(void)
 {
     int n;
+    string line = "23333";
     while (1)
     {
         scanf("%d", &n);
@@ -39,6 +42,7 @@ int main(void)
         }
         printf("%d\n", joseph(n));
     }
+    printf("%s\n", line.c_str());
     return 0;
 }
 

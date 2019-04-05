@@ -1,6 +1,3 @@
-
-#include <moduleManager.h>
-
 #include "moduleManager.h"
 
 unique_ptr<Module> &ModuleManager::getModule() { return module; }
