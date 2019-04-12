@@ -5,44 +5,39 @@
 #include <string>
 using namespace std;
 
-int joseph(int n)
-{
+int joseph(int n) {
     int i;
     int midval = 0;
 
-    for (i = 1; 1; i++)
-    {
+    for (i = 1; 1; i++) {
         int count = n;
         midval = 0;
-        while (count > 0)
-        {
+        while (count > 0) {
             midval = (midval + i) % (n + count);
-            if(midval < n)
+            if (midval < n)
                 break;
             count--;
         }
-        if (count != 0)
-        {
+        if (count != 0) {
             continue;
         }
         return i + 1;
     }
 }
 
-int main(void)
-{
+int main(void) {
     int n;
     string line = "23333";
-    while (1)
-    {
+    double j = 1.0;
+    while (1) {
         scanf("%d", &n);
-        if (n == 0)
-        {
+        if (n == 0) {
             break;
         }
+        j += 1.0;
+        printf("%.2f\n", j);
         printf("%d\n", joseph(n));
+        printf("%s\n", line.c_str());
     }
-    printf("%s\n", line.c_str());
     return 0;
 }
-

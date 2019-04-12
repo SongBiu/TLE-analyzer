@@ -1,44 +1,33 @@
 #include <iostream>
+#include <fstream>
 
-const int MAXSIZE = 10000;
+const int HMAX = 100000;
+int h;
+int history[HMAX];
+int size = 0;
 
-template <class K, class V>
-class HashMap {
-private:
-    K keys[MAXSIZE];
-    V values[MAXSIZE];
-    int size;
-public:
-    HashMap() {
-        size = 0;
-    }
+void dump(int v) {
+    std::cout << v << std::endl;
+}
 
-    void insert(K key, V value) {
-        keys[size] = key;
-        values[size] = value;
-        size++;
-    }
+void hInit() {
+    h = 0;
+}
 
-    V& get(K key) {
-        for (int i = 0; i < ; ++i) {
-            if (keys[i] == key) {
-                return values[i];
-            }
+void hAdd(int var) {
+    h = h * 31 + var;
+}
+
+void hDump() {
+    history[size] = h;
+    size++;
+}
+
+void hCompare() {
+    for (int i = 0; i < size - 1; i++) {
+        if (history[i] == history[size - 1]) {
+            std::cout << "重复计算\n";
+            exit(0);
         }
-        throw "key not exists!";
     }
-
-    V& operator [] (K key) {
-        return get(key);
-    }
-};
-
-template <class T
-class VariableTable
-
-HashMap *loopCounter = new HashMap();
-HashMap<void*, char*> *inVariable = new HashMap();
-
-void insertVariable(void *var, ) {
-    inVariable->get()
 }

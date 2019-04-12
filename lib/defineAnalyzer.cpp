@@ -17,15 +17,24 @@ bool DefineAnalyzer::runOnFunction(Function &F) {
     for (Loop *loop : loopInfo) {
         for (BasicBlock *basicBlock : loop->getBlocks()) {
             for (Instruction &instruction : basicBlock->getInstList()) {
-                outs() << "Instruction: " << instruction.getOpcodeName() << ": "
-                       << instruction << "\n";
                 for (Use &use : instruction.operands()) {
-                    if (((Instruction *) use.get())->getParent()) {
-                        outs() << use.get() << ":"
-                               << loop->contains((Instruction *) use.get()) << "\n";
+                    if (((Instruction *)use.get())->getParent() &&
+                        !loop->contains((Instruction *)use.get())) {
+                        if (use.get()->getType()->getTypeID() == 7) {
+                            continue;
+                        }
+                        outs() << "-------------------\n\n";
+                        outs() << instruction.getOpcodeName() << "\n";
+                        outs() << *use.get() << "\n";
+                        outs() << *use.get()->getType() << "\n\n\n";
+                        outs() << use.get()->getType()->getTypeID() << "\n";
+                        IRBuilder<> builder((Instruction *)use.get());
+                        Function *function =
+                            F.getParent()->getFunction("Z4dumpi");
+                        builder.CreateCall(function,
+                                           ArrayRef<Value *>({use.get()}));
                     }
                 }
-                outs() << "end Instruction\n\n";
             }
         }
     }

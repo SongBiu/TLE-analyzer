@@ -11,7 +11,7 @@ void ModuleManager::readModule(string name) {
         outs() << "compile " << name << "error\n";
         return;
     }
-//    linkLib(name);
+    linkLib(name);
     module = parseIRFile(name + ".ll", Err, context);
     if (!module) {
         Err.print("moduleManager.h", errs());
@@ -83,6 +83,6 @@ bool ModuleManager::compileCxx2IR(string name) {
 
 void ModuleManager::linkLib(string name) {
     compileCxx2IR("lib/functionLib");
-    string cmd = "llvm-link ./functionLib.ll ./" + name + ".ll -o " + name + ".ll";
+    string cmd = "llvm-link ./lib/functionLib.ll ./" + name + ".ll -o " + name + ".ll";
     system(cmd.c_str());
 }

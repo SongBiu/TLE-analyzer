@@ -14,17 +14,16 @@ bool LoopFinder::runOnFunction(Function &F) {
     for (Loop *loop : loopInfo) {
         markLoopInFunction(F, loop);
         loopEscape->escapeLoop(loop);
-//        dumpBranchRuntime(loop->getBlocksVector());
+        //        dumpBranchRuntime(loop->getBlocksVector());
         for (Loop *subLoop : loop->getSubLoops()) {
             markLoopInFunction(F, subLoop);
             loopEscape->escapeLoop(subLoop);
-//            dumpBranchRuntime(subLoop->getBlocksVector());
+            //            dumpBranchRuntime(subLoop->getBlocksVector());
         }
     }
     delete loopEscape;
     return true;
 };
-
 
 void LoopFinder::markLoopInFunction(Function &F, Loop *loop) {
     Function *loopInit = F.getParent()->getFunction(Util::functionLoopInit);
@@ -49,9 +48,8 @@ void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
                 vector<Value *> argContainer;
                 argContainer.push_back(instruction.getOperand(0));
                 ArrayRef<Value *> args(argContainer);
-                Function *f =
-                        basicBlock->getParent()->getParent()->getFunction(
-                                Util::functionBranch);
+                Function *f = basicBlock->getParent()->getParent()->getFunction(
+                    Util::functionBranch);
                 builder.CreateCall(f, args);
             }
         }
@@ -62,7 +60,7 @@ void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
                                         Loop *loop) {
     Instruction *entryInstruction = basicBlock->getFirstNonPHI();
     IRBuilder<> builder(entryInstruction);
-    Value *args[] = {builder.getInt64((uint64_t) loop)};
+    Value *args[] = {builder.getInt64((uint64_t)loop)};
     try {
         builder.CreateCall(call, args);
     } catch (exception &e) {
