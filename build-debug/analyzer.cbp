@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="analyzer"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\lib\;CMake Files\lib\pass\;CMake Files\lib\manager\;CMake Files\src\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="util">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/libutil.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 util"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="util/fast">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/libutil.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 util/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pass">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/libpass.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 pass"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="pass/fast">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/libpass.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 pass/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/pass/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="manager">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/libmanager.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 manager"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="manager/fast">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/libmanager.dylib" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 manager/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/lib/manager/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="analyzer">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/analyzer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 analyzer"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="analyzer/fast">
+				<Option output="/Users/songl/OneDrive/TLE-analyzer/build-debug/analyzer" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/songl/OneDrive/TLE-analyzer/build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/local/opt/llvm/include"/>
+					<Add directory="/Users/songl/OneDrive/TLE-analyzer/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/10.0.1/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 analyzer/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/Users/songl/OneDrive/TLE-analyzer/build-debug/src/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/Util.cpp">
+			<Option target="util"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/manager/BlockManager.cpp">
+			<Option target="manager"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/manager/LoopManager.cpp">
+			<Option target="manager"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/manager/ModuleManager.cpp">
+			<Option target="manager"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/pass/DefineAnalyzer.cpp">
+			<Option target="pass"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/pass/LoopFinder.cpp">
+			<Option target="pass"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/src/Application.cpp">
+			<Option target="analyzer"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/pass/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\pass\"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/lib/manager/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\lib\manager\"/>
+		</Unit>
+		<Unit filename="/Users/songl/OneDrive/TLE-analyzer/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\src\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

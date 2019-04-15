@@ -9,6 +9,9 @@ class Util {
 public:
     static const int brOpCode = 2;
     static const int brTargetOpNum = 3;
+    static const int loadOpCode = 31;
+    static const int storeOpCode = 32;
+    static const int pointerTypeId = 15;
     static const string functionLoopInit;
     static const string functionLoopRun;
     static const string functionLoopExit;

@@ -3,8 +3,8 @@
 //
 #include <stdio.h>
 #include <string>
-using namespace std;
 
+using namespace std;
 int joseph(int n) {
     int i;
     int midval = 0;
@@ -25,19 +25,20 @@ int joseph(int n) {
     }
 }
 
-int main(void) {
+int main() {
     int n;
-    string line = "23333";
-    double j = 1.0;
+    int j = 365;
     while (1) {
         scanf("%d", &n);
         if (n == 0) {
             break;
         }
-        j += 1.0;
-        printf("%.2f\n", j);
-        printf("%d\n", joseph(n));
-        printf("%s\n", line.c_str());
+        j += 1;
+        j -= 1;
+        j *= 2;
+        j /= 2;
+        joseph(n);
+        // printf("%d\n", joseph(n));
     }
     return 0;
 }
