@@ -1,7 +1,8 @@
-#ifndef MODULE_MANAGER_H
-#define MODULE_MANAGER_H
+#ifndef MODULE_ANALYZER_H
+#define MODULE_ANALYZER_H
 
-#include "loopFinder.h"
+#include "pass/LoopFinder.h"
+#include "pass/DefineAnalyzer.h"
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/LegacyPassManager.h>
 #include <llvm/IR/Module.h>
@@ -16,7 +17,7 @@
 using namespace llvm;
 using namespace std;
 
-class ModuleManager {
+class ModuleAnalyzer {
 public:
     unique_ptr<Module> &getModule();
 
@@ -30,9 +31,17 @@ public:
 
     void runLoopFinder();
 
+    void runDefineAnalyzer();
+
     void dumpGlobalVariables();
 
     void dumpModule();
+
+    void dumpFunction(string functionName = "main");
+
+    void dumpFunctionList();
+
+    void dumpBasicBlocks(StringRef functionName = "main");
 
     void initTarget();
 

@@ -1,13 +1,16 @@
-#include "moduleManager.h"
+#include "ModuleAnalyzer.h"
 
 using namespace llvm;
 using namespace std;
 
 int main() {
-    ModuleManager *moduleManager = new ModuleManager();
-    moduleManager->readModule("test");
-    moduleManager->runLoopFinder();
-    moduleManager->initTarget();
-    moduleManager->runFunction();
+    ModuleAnalyzer *moduleAnalyzer = new ModuleAnalyzer();
+    moduleAnalyzer->readModule("joseph");
+    // moduleAnalyzer->dumpFunctionList();
+    moduleAnalyzer->runDefineAnalyzer();
+    moduleAnalyzer->dumpFunction();
+    moduleAnalyzer->initTarget();
+    moduleAnalyzer->runFunction();
+    moduleAnalyzer->dumpModule();
     return 0;
 }

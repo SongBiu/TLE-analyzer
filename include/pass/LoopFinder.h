@@ -1,7 +1,7 @@
-#ifndef LOOP_FINDER_H
-#define LOOP_FINDER_H
+#ifndef PASS_LOOP_FINDER_H
+#define PASS_LOOP_FINDER_H
 
-#include "util.h"
+#include "util/Magic.h"
 #include <cstring>
 #include <llvm/IR/Function.h>
 #include <llvm/Pass.h>
@@ -19,7 +19,7 @@ public:
 
     LoopFinder() : FunctionPass(pid) {};
 
-    virtual void getAnalysisUsage(AnalysisUsage &AU) const override;
+    virtual void getAnalysisUsage(AnalysisUsage &usage) const override;
 
     bool runOnFunction(Function &F) override;
 
