@@ -1,4 +1,4 @@
-add_executable(analyzer Application.cpp)
-target_link_libraries(analyzer 
-    manager
+add_executable(run Application.cpp)
+target_link_libraries(run 
+    analyzer
 )

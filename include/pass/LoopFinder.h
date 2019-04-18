@@ -1,7 +1,7 @@
-#ifndef PASS_LOOPFINDER_H
-#define PASS_LOOPFINDER_H
+#ifndef PASS_LOOP_FINDER_H
+#define PASS_LOOP_FINDER_H
 
-#include "Util.h"
+#include "util/Magic.h"
 #include <cstring>
 #include <llvm/IR/Function.h>
 #include <llvm/Pass.h>

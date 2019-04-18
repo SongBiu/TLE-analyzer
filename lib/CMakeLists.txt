@@ -1,4 +1,6 @@
 link_libraries(LLVM)
-add_library(util SHARED Util.cpp)
 add_subdirectory(pass)
 add_subdirectory(manager)
+add_subdirectory(util)
+add_library(analyzer SHARED ModuleAnalyzer.cpp)
+target_link_libraries(analyzer pass)

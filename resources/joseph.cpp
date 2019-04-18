@@ -1,10 +1,5 @@
-//
-// Created by lisong on 2019-04-01.
-//
 #include <stdio.h>
-#include <string>
 
-using namespace std;
 int joseph(int n) {
     int i;
     int midval = 0;
@@ -25,19 +20,16 @@ int joseph(int n) {
     }
 }
 
-int main() {
+int main(void) {
     int n;
-    int j = 365;
+    int r;
     while (1) {
         scanf("%d", &n);
         if (n == 0) {
             break;
         }
-        j += 1;
-        j -= 1;
-        j *= 2;
-        j /= 2;
-        joseph(n);
+        r = joseph(n);
+        printf("%d\n", r);
         // printf("%d\n", joseph(n));
     }
     return 0;

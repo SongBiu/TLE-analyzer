@@ -2,10 +2,10 @@
 // Created by lisong on 2019-03-19.
 //
 
-#ifndef MANAGER_BLOCKMANAGER_H
-#define MANAGER_BLOCKMANAGER_H
+#ifndef MANAGER_BLOCK_MANAGER_H
+#define MANAGER_BLOCK_MANAGER_H
 
-#include "Util.h"
+#include "util/Magic.h"
 #include <llvm/IR/BasicBlock.h>
 #include <llvm/IR/Function.h>
 #include <llvm/IR/Module.h>

@@ -5,7 +5,7 @@
 
 void BlockManager::insertBlockAfterBlock(BasicBlock *from, BasicBlock *inserter) {
     Instruction *lastInstruction = &from->getInstList().back();
-    if (Util::brOpCode == lastInstruction->getOpcode()) {
+    if (Magic::brOpCode == lastInstruction->getOpcode()) {
         if (3 == lastInstruction->getNumOperands()) {
 
         } else {

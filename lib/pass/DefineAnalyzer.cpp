@@ -10,35 +10,29 @@ void DefineAnalyzer::getAnalysisUsage(AnalysisUsage &usage) const {
 }
 
 bool DefineAnalyzer::runOnFunction(Function &F) {
-    // outs() << F.getName() << "\n";
-    // return false;
-    if (Util::functionMain != F.getName()) {
+    if (Magic::functionMain != F.getName()) {
         return false;
     }
     LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+    LoopManager *loopManager = new LoopManager();
     for (Loop *loop : loopInfo) {
-        for (BasicBlock *basicBlock : loop->getBlocks()) {
-            for (Instruction &instruction : basicBlock->getInstList()) {
-                if (!(instruction.getOpcode() == Util::loadOpCode || instruction.getOpcode() == Util::storeOpCode ||
-                      instruction.isBinaryOp())) {
-                    continue;
-                }
-                for (Use &use : instruction.operands()) {
-                    Instruction *lastInstruction = dyn_cast<Instruction>(use.get());
-                    if (lastInstruction && !loop->contains(lastInstruction)) {
-                        if (!use.get()->getType()->isPointerTy()) {
-                            continue;
-                        }
-                        IRBuilder<> builder(&instruction);
-                        Function *function = F.getParent()->getFunction("_Z4dumpi");
-                        vector<Value *> container = {
-                            builder.CreatePtrToInt(use.get(), Type::getInt64Ty(F.getContext()))};
-                        ArrayRef<Value *> args(container);
-                        builder.CreateCall(function, args);
-                    }
-                }
-            }
+        loopManager->setLoop(loop);
+        vector<Instruction *> loadInstructions = loopManager->getLoadInstructions();
+        Instruction *insertPoint = loopManager->getInsertPoint();
+
+        Function *initHash = F.getParent()->getFunction(Magic::initHash);
+        Function *addHash = F.getParent()->getFunction(Magic::addHash);
+        Function *dumpHash = F.getParent()->getFunction(Magic::dumpHash);
+        Function *compareHash = F.getParent()->getFunction(Magic::compareHash);
+
+        for (Instruction *instruction : loadInstructions) {
+            loopManager->insertArgs(instruction->getNextNode(), addHash, {dyn_cast<Value>(instruction)});
         }
+
+        loopManager->insertNoArgs(*loadInstructions.begin(), initHash);
+
+        loopManager->insertNoArgs(insertPoint, dumpHash);
+        loopManager->insertNoArgs(insertPoint, compareHash);
     }
     return true;
 }

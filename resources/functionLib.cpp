@@ -8,20 +8,24 @@ int size = 0;
 
 void dump(int v) { std::cout << v << std::endl; }
 
-void hInit() { h = 0; }
+void initHash() { h = 0; }
 
-template <class T> void hAdd(T var) { h = h * 31 + var; }
+void addhash(int var) {
+    h = h * 31 + var;
+    // std::cout << "tmp hash is " << h << std::endl;
+}
 
-void hDump() {
+void dumpHash() {
+    std::cout << "hash is " << h << "\n";
     history[size] = h;
     size++;
 }
 
-void hCompare() {
+void compareHash() {
     for (int i = 0; i < size - 1; i++) {
         if (history[i] == history[size - 1]) {
             std::cout << "重复计算\n";
-            exit(0);
+            break;
         }
     }
 }
