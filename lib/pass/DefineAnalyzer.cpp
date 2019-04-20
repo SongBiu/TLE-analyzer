@@ -1,7 +1,6 @@
 //
 // Created by lisong on 2019-03-29.
 //
-// 获取define在loop外面的输入变量
 #include "pass/DefineAnalyzer.h"
 
 void DefineAnalyzer::getAnalysisUsage(AnalysisUsage &usage) const {

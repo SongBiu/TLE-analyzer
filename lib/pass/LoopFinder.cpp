@@ -9,7 +9,7 @@ bool LoopFinder::runOnFunction(Function &F) {
     if (F.getName() != Magic::functionMain) {
         return false;
     }
-    LoopInfo &loopInfo     = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
+    LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
     for (Loop *loop : loopInfo) {
         markLoopInFunction(F, loop);
         //        dumpBranchRuntime(loop->getBlocksVector());
@@ -22,11 +22,11 @@ bool LoopFinder::runOnFunction(Function &F) {
 };
 
 void LoopFinder::markLoopInFunction(Function &F, Loop *loop) {
-    Function *loopInit    = F.getParent()->getFunction(Magic::functionLoopInit);
+    Function *loopInit = F.getParent()->getFunction(Magic::functionLoopInit);
     BasicBlock *preHeader = loop->getLoopPreheader();
     insertCallInBasicBlock(preHeader, loopInit, loop);
 
-    Function *loopRun  = F.getParent()->getFunction(Magic::functionLoopRun);
+    Function *loopRun = F.getParent()->getFunction(Magic::functionLoopRun);
     BasicBlock *header = loop->getExitBlock()->getPrevNode();
     insertCallInBasicBlock(header, loopRun, loop);
 
@@ -38,22 +38,19 @@ void LoopFinder::markLoopInFunction(Function &F, Loop *loop) {
 void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
     for (BasicBlock *basicBlock : basicBlocks) {
         for (Instruction &instruction : *basicBlock) {
-            if (instruction.getOpcode() == Magic::brOpCode &&
-                instruction.getNumOperands() == Magic::brTargetOpNum) {
+            if (instruction.getOpcode() == Magic::brOpCode && instruction.getNumOperands() == Magic::brTargetOpNum) {
                 IRBuilder<> builder(&instruction);
                 vector<Value *> argContainer;
                 argContainer.push_back(instruction.getOperand(0));
                 ArrayRef<Value *> args(argContainer);
-                Function *f = basicBlock->getParent()->getParent()->getFunction(
-                    Magic::functionBranch);
+                Function *f = basicBlock->getParent()->getParent()->getFunction(Magic::functionBranch);
                 builder.CreateCall(f, args);
             }
         }
     }
 }
 
-void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
-                                        Loop *loop) {
+void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call, Loop *loop) {
     Instruction *entryInstruction = basicBlock->getFirstNonPHI();
     IRBuilder<> builder(entryInstruction);
     Value *args[] = {builder.getInt64((uint64_t)loop)};
