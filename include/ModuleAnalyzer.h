@@ -3,6 +3,7 @@
 
 #include "pass/LoopFinder.h"
 #include "pass/DefineAnalyzer.h"
+#include "pass/BranchCutter.h"
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/LegacyPassManager.h>
 #include <llvm/IR/Module.h>
@@ -32,6 +33,8 @@ public:
     void runLoopFinder();
 
     void runDefineAnalyzer();
+
+    void runBranchCutter();
 
     void dumpGlobalVariables();
 

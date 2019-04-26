@@ -53,6 +53,13 @@ void ModuleAnalyzer::runDefineAnalyzer() {
     PM.run(*module);
 }
 
+void ModuleAnalyzer::runBranchCutter() {
+    legacy::PassManager PM;
+    PM.add(new LoopInfoWrapperPass());
+    PM.add(new BranchCutter());
+    PM.run(*module);
+}
+
 void ModuleAnalyzer::dumpGlobalVariables() {
     for (GlobalVariable &globalVariable : module->getGlobalList()) {
         outs() << '(' << *globalVariable.getType() << ") "
