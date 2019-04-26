@@ -13,7 +13,6 @@ void addhash(int var) {
 }
 
 void dumpHash() {
-    std::cout << "hash is " << h << "\n";
     history[size] = h;
     size++;
 }

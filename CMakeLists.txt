@@ -5,12 +5,8 @@ set(CMAKE_CXX_STANDARD 17)
 
 # add llvm support
 set(LLVM_HOME /usr/local/opt/llvm)
-set(BOOST_HOME /usr/local/Cellar/boost/1.69.0_2)
 include_directories(${LLVM_HOME}/include)
 link_directories(${LLVM_HOME}/lib)
-include_directories(${BOOST_HOME}/include)
-link_directories(${BOOST_HOME}/lib)
-
 
 # set my library
 include_directories(${PROJECT_SOURCE_DIR}/include)

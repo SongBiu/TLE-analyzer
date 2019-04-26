@@ -1,0 +1,76 @@
+//简单的模拟题，不知道会不会TLE，从最小的大于K的开始枚举
+#include<iostream>
+using namespace std;
+int main()
+{
+	int k,a[28],i,j,num,o,l;
+	while(cin>>k)
+	{
+		if(k==0)
+		{
+			break;
+		}
+		j=k*2;
+		num=0;
+		l=1;
+		for(o=k+1;;o++)
+		{
+			for(i=1;i<=j;i++)
+			{
+				a[i]=1;
+			}
+			l=1;
+			num=0;
+			for(i=1;i<=k;i++)
+			{
+				while(1)
+				{
+					if(a[l]==1)
+					{
+						num++;
+						if(num==o)
+						{
+							a[l]=0;
+							l++;
+							if(l>j)
+							{
+								l=l-j;
+							}
+							break;
+						}
+						else
+						{
+							l++;
+							if(l>j)
+							{
+							l=l-j;
+							}
+						}
+					}
+					else if(a[l]==0)
+					{
+						l++;
+						if(l>j)
+						{
+							l=l-j;
+						}
+					}
+				}
+				num=0;
+			}
+			for(i=1;i<=k;i++)
+			{
+				if(a[i]!=1)
+				{
+					break;
+				}
+			}
+			if(i==k+1)
+			{
+				cout<<o<<endl;
+				break;
+			}
+		}
+	}		
+	return 0;
+}

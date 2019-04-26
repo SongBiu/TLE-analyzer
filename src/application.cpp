@@ -1,35 +1,27 @@
 #include "ModuleAnalyzer.h"
-#include <boost/filesystem.hpp>
-#include <iostream>
+#include <chrono>
+#include <thread>
 
 using namespace llvm;
 using namespace std;
-using namespace boost;
 
-vector<filesystem::path> getSource(filesystem::path directoryPath) {
-    vector<filesystem::path> sources;
-    if (filesystem::exists(directoryPath)) {
-        filesystem::directory_iterator begin(directoryPath);
-        filesystem::directory_iterator end;
-        for (; begin != end; begin++) {
-            sources.push_back(begin->path());
-        }
-    }
-    return sources;
+void run(char *name) {
+    ModuleAnalyzer *moduleAnalyzer = new ModuleAnalyzer();
+    moduleAnalyzer->readModule(name);
+    moduleAnalyzer->runDefineAnalyzer();
+    moduleAnalyzer->initTarget();
+    moduleAnalyzer->runFunction();
+    exit(0);
 }
 
-int main() {
-    // ModuleAnalyzer *moduleAnalyzer = new ModuleAnalyzer();
-    // moduleAnalyzer->readModule("joseph");
-    // moduleAnalyzer->dumpFunctionList();
-    // moduleAnalyzer->runDefineAnalyzer();
-    // moduleAnalyzer->dumpFunction();
-    // moduleAnalyzer->initTarget();
-    // moduleAnalyzer->runFunction();
-    // moduleAnalyzer->dumpModule();
-    auto sources = getSource("../resources");
-    for (auto source : sources) {
-        cout << source << "\n";
+int main(int argc, char *argv[]) {
+    if (argc < 2) {
+        outs() << "miss args\n";
+        exit(1);
     }
+    thread t(run, argv[1]);
+    this_thread::sleep_for(chrono::milliseconds(2000));
+    exit(0);
+    t.join();
     return 0;
 }

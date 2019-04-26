@@ -23,7 +23,7 @@ public:
 
     Function *getFunction(string name);
 
-    void readModule(string name);
+    bool readModule(string name);
 
     ExecutionEngine *loadExecuteEngine();
 
