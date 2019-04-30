@@ -1,19 +1,18 @@
 #ifndef MODULE_ANALYZER_H
 #define MODULE_ANALYZER_H
 
-#include "pass/LoopFinder.h"
-#include "pass/DefineAnalyzer.h"
 #include "pass/BranchCutter.h"
+#include "pass/DefineAnalyzer.h"
+#include "pass/LoopFinder.h"
+#include <cstdlib>
+#include <llvm/ExecutionEngine/ExecutionEngine.h>
+#include <llvm/ExecutionEngine/MCJIT.h>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/LegacyPassManager.h>
 #include <llvm/IR/Module.h>
 #include <llvm/IRReader/IRReader.h>
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/Support/TargetSelect.h>
-#include <llvm/ExecutionEngine/ExecutionEngine.h>
-#include <llvm/ExecutionEngine/MCJIT.h>
-#include <cstdlib>
-
 
 using namespace llvm;
 using namespace std;
@@ -24,7 +23,7 @@ public:
 
     Function *getFunction(string name);
 
-    void readModule(string name);
+    void readModule(string name, string libName = "functionLib");
 
     ExecutionEngine *loadExecuteEngine();
 
@@ -56,7 +55,7 @@ private:
 
     bool compileCxx2IR(string name);
 
-    void linkLib(string name);
+    void linkLib(string name, string libName);
 };
 
 #endif

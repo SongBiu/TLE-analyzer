@@ -2,16 +2,14 @@
 
 unique_ptr<Module> &ModuleAnalyzer::getModule() { return module; }
 
-Function *ModuleAnalyzer::getFunction(string name) {
-    return module->getFunction(name);
-}
+Function *ModuleAnalyzer::getFunction(string name) { return module->getFunction(name); }
 
-void ModuleAnalyzer::readModule(string name) {
+void ModuleAnalyzer::readModule(string name, string libName) {
     if (!compileCxx2IR(name)) {
         outs() << "compile " << name << "error\n";
         return;
     }
-    linkLib(name);
+    linkLib(name, libName);
     module = parseIRFile(name + ".ll", Err, context);
     if (!module) {
         Err.print("ModuleAnalyzer.h", errs());
@@ -33,8 +31,7 @@ void ModuleAnalyzer::runFunction(string functionName) {
     Function *function = module->getFunction(functionName);
     ExecutionEngine *executionEngine = loadExecuteEngine();
     if (NULL == function) {
-        outs() << "there is no " << functionName << " in module "
-               << module->getName() << "\n";
+        outs() << "there is no " << functionName << " in module " << module->getName() << "\n";
     }
     executionEngine->runFunctionAsMain(function, {}, NULL);
 }
@@ -62,14 +59,11 @@ void ModuleAnalyzer::runBranchCutter() {
 
 void ModuleAnalyzer::dumpGlobalVariables() {
     for (GlobalVariable &globalVariable : module->getGlobalList()) {
-        outs() << '(' << *globalVariable.getType() << ") "
-               << globalVariable.getName() << "\n";
+        outs() << '(' << *globalVariable.getType() << ") " << globalVariable.getName() << "\n";
     }
 }
 
-void ModuleAnalyzer::dumpModule() {
-    outs() << *module << "\n";
-}
+void ModuleAnalyzer::dumpModule() { outs() << *module << "\n"; }
 
 void ModuleAnalyzer::dumpFunction(string functionName) {
     Function *function = module->getFunction(functionName);
@@ -77,13 +71,13 @@ void ModuleAnalyzer::dumpFunction(string functionName) {
 }
 
 void ModuleAnalyzer::dumpFunctionList() {
-    for (Function &function: module->getFunctionList()) {
+    for (Function &function : module->getFunctionList()) {
         outs() << function.getName() << "\n";
     }
 }
 
 void ModuleAnalyzer::dumpBasicBlocks(StringRef functionName) {
-    for (BasicBlock &basicBlock: *module->getFunction(functionName)) {
+    for (BasicBlock &basicBlock : *module->getFunction(functionName)) {
         outs() << basicBlock << "\n";
     }
 }
@@ -99,8 +93,8 @@ bool ModuleAnalyzer::compileCxx2IR(string name) {
     return (0 == system(cmd.c_str()));
 }
 
-void ModuleAnalyzer::linkLib(string name) {
-    compileCxx2IR("functionLib");
-    string cmd = "llvm-link ./functionLib.ll ./" + name + ".ll -o " + name + ".ll";
+void ModuleAnalyzer::linkLib(string name, string libName) {
+    compileCxx2IR(libName);
+    string cmd = "llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll";
     system(cmd.c_str());
 }
