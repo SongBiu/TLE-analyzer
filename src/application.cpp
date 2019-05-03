@@ -13,7 +13,6 @@ void run(char *name) {
     moduleAnalyzer->runFunction();
     exit(0);
 }
-
 int main(int argc, char *argv[]) {
     if (argc < 2) {
         outs() << "miss args\n";

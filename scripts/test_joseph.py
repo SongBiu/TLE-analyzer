@@ -28,4 +28,4 @@ for file in files:
     if not error:
         correct += 1
 
-print(1- correct * 1.0 / len(files))
+print(correct * 1.0 / len(files))

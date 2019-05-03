@@ -1,1 +1,1 @@
-add_library(util Magic.cpp)
+add_library(util SHARED Magic.cpp)
