@@ -18,7 +18,6 @@ bool DefineAnalyzer::runOnFunction(Function &F) {
         loopManager->setLoop(loop);
         vector<Instruction *> loadInstructions = loopManager->getLoadInstructions();
         Instruction *insertPoint = loopManager->getInsertPoint();
-
         Function *initHash = F.getParent()->getFunction(Magic::initHash);
         Function *addHash = F.getParent()->getFunction(Magic::addHash);
         Function *dumpHash = F.getParent()->getFunction(Magic::dumpHash);

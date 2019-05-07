@@ -62,12 +62,17 @@ Instruction *LoopManager::insertNoArgs(Instruction *instruction, Function *funct
 Instruction *dumpAndCompare(Instruction *Instruction, Function *dump, Function *compare) { return NULL; }
 
 Instruction *LoopManager::getInsertPoint() {
+    return getLastLoad();
     Instruction *firstNonIOCall = getFirstNoIOCall();
     Instruction *lastLoad = getLastLoad();
     Instruction *entrySubLoop = getEntrySubLoop();
     Instruction *insertPoint;
+
     if (entrySubLoop) {
         return min(entrySubLoop, min(lastLoad, firstNonIOCall));
+    }
+    if (!firstNonIOCall) {
+        return lastLoad;
     }
     return min(lastLoad, firstNonIOCall);
 }
@@ -80,12 +85,18 @@ vector<Instruction *> LoopManager::getLoadInstructions() {
             if (Magic::loadOpCode != instruction.getOpcode()) {
                 continue;
             }
-            if (find(stopInstructions.begin(), stopInstructions.end(), &instruction) == stopInstructions.end()) {
+            Instruction *loadInstruction = dyn_cast<Instruction>(instruction.getOperand(0));
+            if (loadInstruction && loop->contains(loadInstruction)) {
+                continue;
+            }
                 loadInstructions.push_back(&instruction);
-            }
-            if (&instruction == getLastLoad()) {
-                return loadInstructions;
-            }
+
+            // if (find(stopInstructions.begin(), stopInstructions.end(), &instruction) == stopInstructions.end()) {
+            //     loadInstructions.push_back(&instruction);
+            // }
+            // if (&instruction == getLastLoad()) {
+            //     return loadInstructions;
+            // }
         }
     }
     return loadInstructions;

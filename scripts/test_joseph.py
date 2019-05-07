@@ -12,6 +12,7 @@ correct = 0
 for file in files:
     cmd = f"./run {file[:-4]} < ../scripts/in > ../scripts/out"
     print(cmd)
+    path = f"{resource_dir}/{file}"
     os.system(cmd)
     with open('../scripts/out') as f:
         out = f.readlines()

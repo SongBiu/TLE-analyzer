@@ -8,7 +8,9 @@ using namespace std;
 void run(char *name) {
     ModuleAnalyzer *moduleAnalyzer = new ModuleAnalyzer();
     moduleAnalyzer->readModule(name);
+    
     moduleAnalyzer->runDefineAnalyzer();
+    // moduleAnalyzer->dumpModule();
     moduleAnalyzer->initTarget();
     moduleAnalyzer->runFunction();
     exit(0);
