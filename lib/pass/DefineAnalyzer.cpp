@@ -9,6 +9,7 @@ void DefineAnalyzer::getAnalysisUsage(AnalysisUsage &usage) const {
 }
 
 bool DefineAnalyzer::runOnFunction(Function &F) {
+    return false;
     if (Magic::functionMain != F.getName()) {
         return false;
     }

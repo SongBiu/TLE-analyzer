@@ -2,16 +2,21 @@
 bool BranchCutter::runOnFunction(Function &F) {
     string name = F.getName();
     if ("main" == name) {
-        Instruction *instruction = findCallDfs(F)->getNextNode();
+        Instruction *instruction = findCallDfs(F);
         insertDump(instruction);
         return true;
     }
     if (!(strstr(name.c_str(), dfsFunction.c_str()))) {
         return false;
     }
-    vector<BasicBlock *> storeBlocks = getStoreBlocks(F);
-    markStoreBlocks(storeBlocks);
-    return !storeBlocks.empty();
+    // vector<BasicBlock *> storeBlocks = getStoreBlocks(F);
+    // markStoreBlocks(storeBlocks);
+    // return !storeBlocks.empty();
+    Instruction *firstInstruction = F.getBasicBlockList().begin()->getFirstNonPHI();
+    Function *function = F.getParent()->getFunction("_Z8countAddv");
+    IRBuilder<> builder(firstInstruction);
+    builder.CreateCall(function, {});
+    return true;
 }
 
 vector<BasicBlock *> BranchCutter::getStoreBlocks(Function &F) {
@@ -48,8 +53,8 @@ Instruction *BranchCutter::findCallDfs(Function &F) {
                     if (name.length() == 0) {
                         continue;
                     }
-                    if (strstr(name.c_str(), "dfs") || strstr(name.c_str(), "Dfs") || strstr(name.c_str(), "DFS")) {
-                        return &instruction;
+                    if (strstr(name.c_str(), dfsFunction.c_str())) {
+                        return instruction.getNextNode();
                     }
                 }
             }

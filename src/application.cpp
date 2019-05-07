@@ -5,9 +5,9 @@ using namespace llvm;
 using namespace std;
 int main() {
     ModuleAnalyzer *moduleAnalyzer = new ModuleAnalyzer();
-    moduleAnalyzer->readModule("hello", "dfsLib");
+    moduleAnalyzer->readModule("dfs", "dfsLib");
     // moduleAnalyzer->dumpFunctionList();
-    // moduleAnalyzer->runBranchCutter("dfs", "rt");
+    moduleAnalyzer->runBranchCutter("DFS", "MinLen");
     // moduleAnalyzer->dumpModule();
     moduleAnalyzer->initTarget();
     moduleAnalyzer->runFunction();
