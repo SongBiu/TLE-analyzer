@@ -24,7 +24,7 @@ public:
 
     Function *getFunction(string name);
 
-    void readModule(string name, string libName = "functionLib");
+    void readModule(string name, string dirName = "resources", string libName = "functionLib");
 
     ExecutionEngine *loadExecuteEngine();
 
@@ -54,7 +54,7 @@ private:
     string error;
     unique_ptr<Module> module;
 
-    bool compileCxx2IR(string name);
+    bool compileCxx2IR(string dirName, string name);
 
     void linkLib(string name, string libName);
 };

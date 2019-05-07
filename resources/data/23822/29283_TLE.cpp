@@ -1,3 +1,4 @@
+// _Z4Passi
 #include<iostream>
 #include<cstdio>
 using namespace std;

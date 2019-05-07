@@ -1,3 +1,4 @@
+// _Z5searchiii
 #include<iostream>
 using namespace std;
 int K,N,R;

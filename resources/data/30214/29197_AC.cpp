@@ -1,3 +1,4 @@
+// _Z3fi
 #include <stdio.h>
 #include <string.h>
 #define N 110

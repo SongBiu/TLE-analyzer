@@ -1,3 +1,4 @@
+// _Z1fi
 #include <iostream>
 #include <cstdio>
 #include <cstring>

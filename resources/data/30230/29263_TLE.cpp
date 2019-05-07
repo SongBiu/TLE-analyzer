@@ -1,3 +1,4 @@
+// _Z4moveiiii
 #include<iostream>
 #include<memory.h>
 using namespace std;

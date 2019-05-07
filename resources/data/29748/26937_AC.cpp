@@ -1,3 +1,4 @@
+// _Z4funciii
 #include <iostream>
 
 using namespace std;

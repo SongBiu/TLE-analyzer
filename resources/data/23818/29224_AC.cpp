@@ -1,3 +1,4 @@
+// _Z3funiii
 #include<iostream>
 #include<memory.h>
 #include<stdlib.h>

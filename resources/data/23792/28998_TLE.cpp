@@ -1,3 +1,4 @@
+// _Z5checkiiiii
 #include<iostream>
 using namespace std;
 int k,n,r,maxer=10000000;

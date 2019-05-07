@@ -1,3 +1,4 @@
+// _Z4walki
 #include <iostream>
 #include <memory.h>
 using namespace std;

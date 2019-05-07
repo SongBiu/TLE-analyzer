@@ -1,3 +1,4 @@
+// _Z4Findiii
 #include<stdio.h> 
 
 int K,N,R;

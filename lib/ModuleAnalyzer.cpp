@@ -4,9 +4,9 @@ unique_ptr<Module> &ModuleAnalyzer::getModule() { return module; }
 
 Function *ModuleAnalyzer::getFunction(string name) { return module->getFunction(name); }
 
-void ModuleAnalyzer::readModule(string name, string libName) {
-    if (!compileCxx2IR(name)) {
-        outs() << "compile " << name << "error\n";
+void ModuleAnalyzer::readModule(string name, string dirName, string libName) {
+    if (!compileCxx2IR(dirName, name)) {
+        outs() << "compile " << name << " error\n";
         return;
     }
     linkLib(name, libName);
@@ -89,13 +89,13 @@ void ModuleAnalyzer::initTarget() {
     InitializeAllAsmPrinters();
 }
 
-bool ModuleAnalyzer::compileCxx2IR(string name) {
-    string cmd = "$LLVM_HOME/bin/clang++ -S -emit-llvm -I$C_LIB ../resources/" + name + ".cpp -o ./" + name + ".ll";
+bool ModuleAnalyzer::compileCxx2IR(string dirName, string name) {
+    string cmd = "clang++ -S -emit-llvm " + dirName + "/" + name + ".cpp -o ./" + name + ".ll";
     return (0 == system(cmd.c_str()));
 }
 
 void ModuleAnalyzer::linkLib(string name, string libName) {
-    compileCxx2IR(libName);
-    string cmd = "$LLVM_HOME/bin/llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll";
+    compileCxx2IR("../resources", libName);
+    string cmd = "llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll";
     system(cmd.c_str());
 }

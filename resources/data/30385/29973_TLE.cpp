@@ -1,3 +1,4 @@
+// _Z4find
 #include <iostream>
 using namespace std;
 

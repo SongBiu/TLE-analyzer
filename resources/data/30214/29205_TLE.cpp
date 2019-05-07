@@ -1,3 +1,4 @@
+// _Z3dfsiii
 #include <stdio.h>
 #include <string.h>
 int coins,cities,roads,cur_coins=0,cur_length=0,ans=99999,visited[101],num[101]={0};
