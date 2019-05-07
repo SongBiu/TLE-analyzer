@@ -7,6 +7,7 @@
 #include <cstdlib>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
 #include <llvm/ExecutionEngine/MCJIT.h>
+#include <llvm/ExecutionEngine/GenericValue.h>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/LegacyPassManager.h>
 #include <llvm/IR/Module.h>
@@ -33,7 +34,7 @@ public:
 
     void runDefineAnalyzer();
 
-    void runBranchCutter();
+    void runBranchCutter(string dfsFunction, string resultName);
 
     void dumpGlobalVariables();
 

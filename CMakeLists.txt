@@ -5,8 +5,11 @@ set(CMAKE_CXX_STANDARD 17)
 
 # add llvm support
 set(LLVM_HOME /usr/local/opt/llvm)
+set(C_LIB /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include)
 include_directories(${LLVM_HOME}/include)
+include_directories(${C_LIB})
 link_directories(${LLVM_HOME}/lib)
+
 
 
 # set my library

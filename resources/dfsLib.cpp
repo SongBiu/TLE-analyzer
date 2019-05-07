@@ -7,5 +7,5 @@ void countAdd() {
 }
 
 void countDump() {
-    cout << assCount << "\n";
+    cout << "count over! result is " << assCount << "\n";
 }

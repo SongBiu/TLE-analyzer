@@ -20,6 +20,7 @@ ExecutionEngine *ModuleAnalyzer::loadExecuteEngine() {
     EngineBuilder enginerBuilder(move(module));
     enginerBuilder.setErrorStr(&error);
     enginerBuilder.setEngineKind(EngineKind::JIT);
+    enginerBuilder.setOptLevel(CodeGenOpt::None);
     ExecutionEngine *ee = enginerBuilder.create();
     if (!ee) {
         outs() << error << "\n";
@@ -33,7 +34,7 @@ void ModuleAnalyzer::runFunction(string functionName) {
     if (NULL == function) {
         outs() << "there is no " << functionName << " in module " << module->getName() << "\n";
     }
-    executionEngine->runFunctionAsMain(function, {}, NULL);
+    executionEngine->runFunctionAsMain(function, {}, 0);
 }
 
 void ModuleAnalyzer::runLoopFinder() {
@@ -50,10 +51,10 @@ void ModuleAnalyzer::runDefineAnalyzer() {
     PM.run(*module);
 }
 
-void ModuleAnalyzer::runBranchCutter() {
+void ModuleAnalyzer::runBranchCutter(string dfsFunction, string resultName) {
     legacy::PassManager PM;
     PM.add(new LoopInfoWrapperPass());
-    PM.add(new BranchCutter());
+    PM.add(new BranchCutter(dfsFunction, resultName));
     PM.run(*module);
 }
 
@@ -89,12 +90,12 @@ void ModuleAnalyzer::initTarget() {
 }
 
 bool ModuleAnalyzer::compileCxx2IR(string name) {
-    string cmd = "clang++ -S -emit-llvm ../resources/" + name + ".cpp -o ./" + name + ".ll";
+    string cmd = "$LLVM_HOME/bin/clang++ -S -emit-llvm -I$C_LIB ../resources/" + name + ".cpp -o ./" + name + ".ll";
     return (0 == system(cmd.c_str()));
 }
 
 void ModuleAnalyzer::linkLib(string name, string libName) {
     compileCxx2IR(libName);
-    string cmd = "llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll";
+    string cmd = "$LLVM_HOME/bin/llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll";
     system(cmd.c_str());
 }

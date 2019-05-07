@@ -1,7 +1,8 @@
 #include <iostream>
-#include <map>
+#include <string>
 using namespace std;
+string line = "hello";
 int main() {
-    cout << "hello world\n";
+    std::cout << line << std::endl;
     return 0;
 }
