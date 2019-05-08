@@ -89,7 +89,7 @@ vector<Instruction *> LoopManager::getLoadInstructions() {
             if (loadInstruction && loop->contains(loadInstruction)) {
                 continue;
             }
-                loadInstructions.push_back(&instruction);
+            loadInstructions.push_back(&instruction);
 
             // if (find(stopInstructions.begin(), stopInstructions.end(), &instruction) == stopInstructions.end()) {
             //     loadInstructions.push_back(&instruction);
