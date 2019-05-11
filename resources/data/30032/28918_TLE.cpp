@@ -1,4 +1,4 @@
-// _Z9Goforwardiiii
+// _Z9Goforwardiiii minlen
 #include <stdio.h>
 #include <iostream>
 #include <string.h>

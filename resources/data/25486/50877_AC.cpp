@@ -1,4 +1,4 @@
-// dfs
+// _Z3dfs min
 #include<stdio.h>
 #include<stdlib.h>
 typedef struct {

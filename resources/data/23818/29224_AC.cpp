@@ -1,4 +1,4 @@
-// _Z3funiii
+// _Z3funiii result
 #include<iostream>
 #include<memory.h>
 #include<stdlib.h>

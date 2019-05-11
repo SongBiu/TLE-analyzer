@@ -1,4 +1,4 @@
-// _Z4seariii
+// _Z4seariii res
 #include<iostream>
 #include<cstdio>
 using namespace std;

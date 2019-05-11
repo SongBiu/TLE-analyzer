@@ -7,22 +7,22 @@
 #include <llvm/IR/Instruction.h>
 #include <llvm/Support/raw_ostream.h>
 #include <vector>
-using namespace llvm;
-using namespace std;
+
 class LoopManager {
 private:
-    Loop *loop;
+    llvm::Loop *loop;
 
 public:
     void dumpLoop();
-    void setLoop(Loop *loop);
-    Instruction *getEntrySubLoop();
-    Instruction *getFirstNoIOCall();
-    Instruction *getLastLoad();
-    Instruction *insertArgs(Instruction *instruction, Function *function, ArrayRef<Value *> args);
-    Instruction *insertNoArgs(Instruction *instruction, Function *function);
-    Instruction *dumpAndCompare(Instruction *Instruction, Function *dump, Function *compare);
-    Instruction *getInsertPoint();
-    vector<Instruction *> getLoadInstructions();
+    void setLoop(llvm::Loop *loop);
+    llvm::Instruction *getEntrySubLoop();
+    llvm::Instruction *getFirstNoIOCall();
+    llvm::Instruction *getLastLoad();
+    llvm::Instruction *insertArgs(llvm::Instruction *instruction, llvm::Function *function,
+                                  llvm::ArrayRef<llvm::Value *> args);
+    llvm::Instruction *insertNoArgs(llvm::Instruction *instruction, llvm::Function *function);
+    llvm::Instruction *dumpAndCompare(llvm::Instruction *Instruction, llvm::Function *dump, llvm::Function *compare);
+    llvm::Instruction *getInsertPoint();
+    std::vector<llvm::Instruction *> getLoadInstructions();
 };
 #endif

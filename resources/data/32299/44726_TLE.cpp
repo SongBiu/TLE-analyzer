@@ -1,4 +1,4 @@
-// _Z3dfsiii
+// _Z3dfsiii res
 #include <iostream>
 using namespace std;
 int num[101], d[101][300], c[101][300], l[101][300], K, N, R;

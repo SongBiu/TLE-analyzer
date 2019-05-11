@@ -13,14 +13,11 @@
 #include <llvm/IR/Instructions.h>
 #include <llvm/IR/IRBuilder.h>
 
-using namespace llvm;
-using namespace std;
-
 class BlockManager {
 private:
-    void insertBlockAfterBlock(BasicBlock *from, BasicBlock *inserter);
+    void insertBlockAfterBlock(llvm::BasicBlock *from, llvm::BasicBlock *inserter);
 public:
-    void insertFunctionAfterBlock(BasicBlock *block, Function *function, ArrayRef<Value *> args, string name = "jumper");
+    void insertFunctionAfterBlock(llvm::BasicBlock *block, llvm::Function *function, llvm::ArrayRef<llvm::Value *> args, std::string name = "jumper");
 };
 
 #endif //BLOCK_MANAGER_H

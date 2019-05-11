@@ -1,4 +1,4 @@
-// _Z4moveiiii
+// _Z4moveiiii minlen
 #include<iostream>
 #include<memory.h>
 using namespace std;

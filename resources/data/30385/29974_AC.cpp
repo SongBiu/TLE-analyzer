@@ -1,4 +1,4 @@
-// _Z4find
+// _Z4find shortest
 #include <iostream>
 using namespace std;
 

@@ -3,8 +3,6 @@
 
 #include <string>
 
-using namespace std;
-
 class Magic {
 public:
     static const int brOpCode = 2;
@@ -12,15 +10,21 @@ public:
     static const int loadOpCode = 31;
     static const int storeOpCode = 32;
     static const int pointerTypeId = 15;
-    static const string functionLoopInit;
-    static const string functionLoopRun;
-    static const string functionLoopExit;
-    static const string functionBranch;
-    static const string functionMain;
-    static const string initHash;
-    static const string addHash;
-    static const string dumpHash;
-    static const string compareHash;
+    static const std::string functionLoopInit;
+    static const std::string functionLoopRun;
+    static const std::string functionLoopExit;
+    static const std::string functionBranch;
+    static const std::string functionMain;
+    static const std::string initHash;
+    static const std::string addHash;
+    static const std::string dumpHash;
+    static const std::string compareHash;
+    static const std::string dfsCallInit;
+    static const std::string dfsCallAdd;
+    static const std::string dfsCallDump;
+    static const std::string storeInit;
+    static const std::string storeAdd;
+    static const std::string storeDump;
 };
 
 #endif

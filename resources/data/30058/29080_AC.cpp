@@ -1,4 +1,4 @@
-// _Z3DFSiii
+// _Z3DFSiii MinLen
 #include<iostream>
 #include <cstring>
 using namespace std;

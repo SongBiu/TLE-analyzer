@@ -6,8 +6,8 @@
 #include "pass/LoopFinder.h"
 #include <cstdlib>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
-#include <llvm/ExecutionEngine/MCJIT.h>
 #include <llvm/ExecutionEngine/GenericValue.h>
+#include <llvm/ExecutionEngine/MCJIT.h>
 #include <llvm/IR/LLVMContext.h>
 #include <llvm/IR/LegacyPassManager.h>
 #include <llvm/IR/Module.h>
@@ -15,48 +15,45 @@
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/Support/TargetSelect.h>
 
-using namespace llvm;
-using namespace std;
-
 class ModuleAnalyzer {
 public:
-    unique_ptr<Module> &getModule();
+    std::unique_ptr<llvm::Module> &getModule();
 
-    Function *getFunction(string name);
+    llvm::Function *getFunction(std::string name);
 
-    void readModule(string name, string dirName = "resources", string libName = "functionLib");
+    void readModule(std::string name, std::string dirName = "resources", std::string libName = "functionLib");
 
-    ExecutionEngine *loadExecuteEngine();
+    llvm::ExecutionEngine *loadExecuteEngine();
 
-    void runFunction(string functionName = "main");
+    void runFunction(std::string functionName = "main");
 
     void runLoopFinder();
 
     void runDefineAnalyzer();
 
-    void runBranchCutter(string dfsFunction, string resultName);
+    void runBranchCutter(std::string dfsFunction, std::string resultName);
 
     void dumpGlobalVariables();
 
     void dumpModule();
 
-    void dumpFunction(string functionName = "main");
+    void dumpFunction(std::string functionName = "main");
 
     void dumpFunctionList();
 
-    void dumpBasicBlocks(StringRef functionName = "main");
+    void dumpBasicBlocks(llvm::StringRef functionName = "main");
 
     void initTarget();
 
 private:
-    LLVMContext context;
-    SMDiagnostic Err;
-    string error;
-    unique_ptr<Module> module;
+    llvm::LLVMContext context;
+    llvm::SMDiagnostic Err;
+    std::string error;
+    std::unique_ptr<llvm::Module> module;
 
-    bool compileCxx2IR(string dirName, string name);
+    bool compileCxx2IR(std::string dirName, std::string name);
 
-    void linkLib(string name, string libName);
+    void linkLib(std::string name, std::string libName);
 };
 
 #endif

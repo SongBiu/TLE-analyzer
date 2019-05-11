@@ -1,19 +1,19 @@
 #include "pass/LoopFinder.h"
 
-void LoopFinder::getAnalysisUsage(AnalysisUsage &usage) const {
+void LoopFinder::getAnalysisUsage(llvm::AnalysisUsage &usage) const {
     usage.setPreservesCFG();
-    usage.addRequired<LoopInfoWrapperPass>();
+    usage.addRequired<llvm::LoopInfoWrapperPass>();
 }
 
-bool LoopFinder::runOnFunction(Function &F) {
+bool LoopFinder::runOnFunction(llvm::Function &F) {
     if (F.getName() != Magic::functionMain) {
         return false;
     }
-    LoopInfo &loopInfo = getAnalysis<LoopInfoWrapperPass>().getLoopInfo();
-    for (Loop *loop : loopInfo) {
+    llvm::LoopInfo &loopInfo = getAnalysis<llvm::LoopInfoWrapperPass>().getLoopInfo();
+    for (llvm::Loop *loop : loopInfo) {
         markLoopInFunction(F, loop);
         //        dumpBranchRuntime(loop->getBlocksVector());
-        for (Loop *subLoop : loop->getSubLoops()) {
+        for (llvm::Loop *subLoop : loop->getSubLoops()) {
             markLoopInFunction(F, subLoop);
             //            dumpBranchRuntime(subLoop->getBlocksVector());
         }
@@ -21,42 +21,42 @@ bool LoopFinder::runOnFunction(Function &F) {
     return true;
 };
 
-void LoopFinder::markLoopInFunction(Function &F, Loop *loop) {
-    Function *loopInit = F.getParent()->getFunction(Magic::functionLoopInit);
-    BasicBlock *preHeader = loop->getLoopPreheader();
+void LoopFinder::markLoopInFunction(llvm::Function &F, llvm::Loop *loop) {
+    llvm::Function *loopInit = F.getParent()->getFunction(Magic::functionLoopInit);
+    llvm::BasicBlock *preHeader = loop->getLoopPreheader();
     insertCallInBasicBlock(preHeader, loopInit, loop);
 
-    Function *loopRun = F.getParent()->getFunction(Magic::functionLoopRun);
-    BasicBlock *header = loop->getExitBlock()->getPrevNode();
+    llvm::Function *loopRun = F.getParent()->getFunction(Magic::functionLoopRun);
+    llvm::BasicBlock *header = loop->getExitBlock()->getPrevNode();
     insertCallInBasicBlock(header, loopRun, loop);
 
-    Function *loopExit = F.getParent()->getFunction(Magic::functionLoopExit);
-    BasicBlock *exitBB = loop->getExitBlock();
+    llvm::Function *loopExit = F.getParent()->getFunction(Magic::functionLoopExit);
+    llvm::BasicBlock *exitBB = loop->getExitBlock();
     insertCallInBasicBlock(exitBB, loopExit, loop);
 }
 
-void LoopFinder::dumpBranchRuntime(vector<BasicBlock *> basicBlocks) {
-    for (BasicBlock *basicBlock : basicBlocks) {
-        for (Instruction &instruction : *basicBlock) {
+void LoopFinder::dumpBranchRuntime(std::vector<llvm::BasicBlock *> basicBlocks) {
+    for (llvm::BasicBlock *basicBlock : basicBlocks) {
+        for (llvm::Instruction &instruction : *basicBlock) {
             if (instruction.getOpcode() == Magic::brOpCode && instruction.getNumOperands() == Magic::brTargetOpNum) {
-                IRBuilder<> builder(&instruction);
-                vector<Value *> argContainer;
+                llvm::IRBuilder<> builder(&instruction);
+                std::vector<llvm::Value *> argContainer;
                 argContainer.push_back(instruction.getOperand(0));
-                ArrayRef<Value *> args(argContainer);
-                Function *f = basicBlock->getParent()->getParent()->getFunction(Magic::functionBranch);
+                llvm::ArrayRef<llvm::Value *> args(argContainer);
+                llvm::Function *f = basicBlock->getParent()->getParent()->getFunction(Magic::functionBranch);
                 builder.CreateCall(f, args);
             }
         }
     }
 }
 
-void LoopFinder::insertCallInBasicBlock(BasicBlock *basicBlock, Function *call, Loop *loop) {
-    Instruction *entryInstruction = basicBlock->getFirstNonPHI();
-    IRBuilder<> builder(entryInstruction);
-    Value *args[] = {builder.getInt64((uint64_t)loop)};
+void LoopFinder::insertCallInBasicBlock(llvm::BasicBlock *basicBlock, llvm::Function *call, llvm::Loop *loop) {
+    llvm::Instruction *entryInstruction = basicBlock->getFirstNonPHI();
+    llvm::IRBuilder<> builder(entryInstruction);
+    llvm::Value *args[] = {builder.getInt64((uint64_t)loop)};
     try {
         builder.CreateCall(call, args);
-    } catch (exception &e) {
-        outs() << e.what() << "\n";
+    } catch (std::exception &e) {
+        llvm::outs() << e.what() << "\n";
     }
 }

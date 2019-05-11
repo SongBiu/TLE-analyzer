@@ -1,4 +1,4 @@
-// _Z5checkiiiii
+// _Z5checkiiiii maxer
 #include<iostream>
 using namespace std;
 int k,n,r,maxer=10000000;

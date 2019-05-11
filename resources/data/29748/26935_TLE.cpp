@@ -1,4 +1,4 @@
-// _Z4funciii
+// _Z4funciii fmin
 #include <iostream>
 
 using namespace std;

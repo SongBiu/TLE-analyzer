@@ -1,11 +1,27 @@
 #include <iostream>
-using namespace std;
-int assCount = 0;
+int dfsCount = 0;
+int storeCount = 0;
 
-void countAdd() {
-    assCount++;
+void dfsCallInit() {
+    dfsCount = 0;
 }
 
-void countDump() {
-    cout << "count over! result is " << assCount << "\n";
+void dfsCallAdd() {
+    dfsCount++;
+}
+
+void dfsCallDump() {
+    std::cout << "call number is " << dfsCount << "\n";
+}
+
+void storeInit() {
+    storeCount = 0;
+}
+
+void storeAdd() {
+    storeCount++;
+}
+
+void storeDump() {
+    std::cout << "store number is " << storeCount << "\n";
 }

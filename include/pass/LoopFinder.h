@@ -11,26 +11,25 @@
 #include <llvm/IR/BasicBlock.h>
 #include <llvm/IR/IRBuilder.h>
 
-using namespace llvm;
 
-class LoopFinder : public FunctionPass {
+class LoopFinder : public llvm::FunctionPass {
 public:
     static char pid;
 
     LoopFinder() : FunctionPass(pid) {};
 
-    virtual void getAnalysisUsage(AnalysisUsage &usage) const override;
+    virtual void getAnalysisUsage(llvm::AnalysisUsage &usage) const override;
 
-    bool runOnFunction(Function &F) override;
+    bool runOnFunction(llvm::Function &F) override;
 
 
 private:
-    void markLoopInFunction(Function &F, Loop *loop);
+    void markLoopInFunction(llvm::Function &F, llvm::Loop *loop);
 
-    void dumpBranchRuntime(vector<BasicBlock *> basicBlocks);
+    void dumpBranchRuntime(std::vector<llvm::BasicBlock *> basicBlocks);
 
-    void insertCallInBasicBlock(BasicBlock *basicBlock, Function *call,
-                                Loop *loop);
+    void insertCallInBasicBlock(llvm::BasicBlock *basicBlock, llvm::Function *call,
+                                llvm::Loop *loop);
 };
 
 char LoopFinder::pid = 0;

@@ -1,4 +1,4 @@
-// _Z4Findiii
+// _Z4Findiii min
 #include<stdio.h> 
 
 int K,N,R;

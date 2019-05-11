@@ -6,27 +6,26 @@
 #include <llvm/Pass.h>
 #include <string>
 #include <vector>
-using namespace llvm;
-using namespace std;
-class BranchCutter : public FunctionPass {
+class BranchCutter : public llvm::FunctionPass {
 private:
-    string dfsFunction;
-    string resultName;
+    std::string dfsFunction;
+    std::string resultName;
 
 public:
     static char pid;
 
-    BranchCutter(string dfsFunction, string resultName) : FunctionPass(pid), dfsFunction(dfsFunction), resultName(resultName) {};
+    BranchCutter(std::string dfsFunction, std::string resultName)
+        : FunctionPass(pid), dfsFunction(dfsFunction), resultName(resultName){};
 
-    bool runOnFunction(Function &F) override;
+    bool runOnFunction(llvm::Function &F) override;
 
-    vector<BasicBlock *> getStoreBlocks(Function &F);
+    std::vector<llvm::BasicBlock *> getStoreBlocks(llvm::Function &F);
 
-    void markStoreBlocks(vector<BasicBlock *> &storeBlocks);
+    void markStoreBlocks(std::vector<llvm::BasicBlock *> &storeBlocks);
 
-    Instruction *findCallDfs(Function &F);
+    llvm::Instruction *findCallDfs(llvm::Function &F);
 
-    void insertDump(Instruction *instruction);
+    void insertDump(llvm::Instruction *instruction);
 };
 char BranchCutter::pid = 0;
 #endif

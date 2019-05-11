@@ -1,4 +1,4 @@
-// _Z1fi
+// _Z1fi minl
 #include <iostream>
 #include <cstdio>
 #include <cstring>

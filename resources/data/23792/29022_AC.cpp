@@ -1,4 +1,4 @@
-// _Z5checkiii
+// _Z5checkiii miner
 #include<iostream>
 using namespace std;
 struct{

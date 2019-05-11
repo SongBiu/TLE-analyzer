@@ -15,7 +15,7 @@ for i in range(len(in_files)):
 dirs = os.listdir(root)
 
 
-def run(path, name, mode, func):
+def run(path, name, mode, func, result):
     global in_files
     mean = 0
     n = len(in_files)
@@ -23,7 +23,7 @@ def run(path, name, mode, func):
     for in_file in in_files:
         os.system(command)
         print(command)
-        command = f"./run {path} {name} {func} < {in_file} | grep 'result is'"
+        command = f"./run {path} {name} {func} {result} < {in_file} | grep 'result is'"
         r = os.popen(command)
         line = r.readline()
         if line == '':
@@ -47,7 +47,8 @@ for file in dirs:
         with open(f"{path}/{code}") as f:
             line = f.readline()
             func = line.split(" ")[1].strip()
+            result = line.split(" ")[2].strip()
         if code.split("_")[1] == "TLE.cpp":
-            run(path, code.split('.')[0], "TLE", func)
+            run(path, code.split('.')[0], "TLE", func, result)
         else:
-            run(path, code.split('.')[0], "AC", func)
+            run(path, code.split('.')[0], "AC", func, result)
