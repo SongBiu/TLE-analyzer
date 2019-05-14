@@ -60,7 +60,7 @@ void ModuleAnalyzer::runBranchCutter(std::string dfsFunction, std::string result
     llvm::WriteBitcodeToFile(*module, file);
     file.flush();
     std::system("clang++ target.ll -o target");
-    std::system(("./target < " + input).c_str());
+    std::system(("gtimeout 5 ./target < " + input).c_str());
 }
 
 void ModuleAnalyzer::dumpGlobalVariables() {
@@ -95,13 +95,13 @@ void ModuleAnalyzer::initTarget() {
 }
 
 bool ModuleAnalyzer::compileCxx2IR(std::string dirName, std::string name) {
-    std::string cmd = "clang++ -S -emit-llvm " + dirName + "/" + name + ".cpp -o ./" + name + ".ll";
+    std::string cmd = "clang++ -S -emit-llvm " + dirName + "/" + name + ".cpp -o ./" + name + ".ll >/dev/null 2>&1";
     return (0 == system(cmd.c_str()));
 }
 
 void ModuleAnalyzer::linkLib(std::string name, std::string libName) {
     compileCxx2IR("../resources", libName);
-    std::string cmd = "llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll";
+    std::string cmd = "llvm-link ./" + libName + ".ll ./" + name + ".ll -o " + name + ".ll >/dev/null 2>&1";
     system(cmd.c_str());
 }
 } // namespace analyzer

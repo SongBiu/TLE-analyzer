@@ -24,10 +24,10 @@ tle_count = 0
 def run(path, name, mode, func, result, input):
     global ac_count, ac_mean, tle_count, tle_mean
     command = f"./run {path} {name} {func} {result} {input} | grep 'number is'"
-    os.system(f"echo {command} >> ../scripts/out")
+    print(command)
     r = os.popen(command)
     lines = r.readlines()
-    if len(lines) == 0:
+    if len(lines) != 2:
         return
     store_num = int(lines[0].split(" ")[-1])
     call_num = int(lines[1].split(" ")[-1])
@@ -38,6 +38,7 @@ def run(path, name, mode, func, result, input):
     else:
         ac_count += 1
         ac_mean += rate
+    print(tle_mean, "hahahha", ac_mean)
     # os.system(
     #     f"echo {path} {name} {mode} store:{store_num} call_num:{call_num} rate:{rate} >> ../scripts/out")
 
@@ -62,6 +63,6 @@ for file_input in in_files:
             line = f.readline()
             func = line.split(" ")[1].strip()
             result = line.split(" ")[2].strip()
-            run(tle_dir, file.split('.')[0], "AC", func, result, file_input)
+            run(tle_dir, file.split('.')[0], "TLE", func, result, file_input)
     cmd = f"echo tle_mean:{tle_mean / tle_count} ac_mean:{ac_mean / ac_count} >> ../scripts/out"
     os.system(cmd)

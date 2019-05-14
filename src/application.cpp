@@ -16,8 +16,8 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     std::thread t(run, argv[1], argv[2], argv[3], argv[4], argv[5]);
-    std::this_thread::sleep_for(std::chrono::milliseconds(10000));
-    std::cout << "result is -1\n";
+    std::this_thread::sleep_for(std::chrono::seconds(5));
+    std::cout << "number is -1\n";
     exit(0);
     t.join();
     return 0;
