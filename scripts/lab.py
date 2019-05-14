@@ -15,14 +15,16 @@ for i in range(len(in_files)):
     in_files[i] = f"{in_root}/{in_files[i]}"
 
 
-ac_mean = 0.
+ac_store_num = 0
+ac_call_num = 0
 ac_count = 0
-tle_mean = 0.
+tle_store_num = 0
+tle_call_num = 0
 tle_count = 0
 
 
 def run(path, name, mode, func, result, input):
-    global ac_count, ac_mean, tle_count, tle_mean
+    global ac_store_num, ac_call_num, ac_count, tle_store_num, tle_call_num, tle_count
     command = f"./run {path} {name} {func} {result} {input} | grep 'number is'"
     print(command)
     r = os.popen(command)
@@ -31,23 +33,23 @@ def run(path, name, mode, func, result, input):
         return
     store_num = int(lines[0].split(" ")[-1])
     call_num = int(lines[1].split(" ")[-1])
-    rate = store_num * 1.0 / call_num
     if mode == "TLE":
+        tle_store_num += store_num
+        tle_call_num += call_num
         tle_count += 1
-        tle_mean += rate
     else:
+        ac_store_num += store_num
+        ac_call_num += call_num
         ac_count += 1
-        ac_mean += rate
-    print(tle_mean, "hahahha", ac_mean)
-    # os.system(
-    #     f"echo {path} {name} {mode} store:{store_num} call_num:{call_num} rate:{rate} >> ../scripts/out")
 
 
 for file_input in in_files:
+    ac_call_num = 0
+    ac_store_num = 0
     ac_count = 0
-    ac_mean = 0.
+    tle_call_num = 0
+    tle_store_num = 0
     tle_count = 0
-    tle_mean = 0.
     cmd = f"echo {file_input} >> ../scripts/out"
     os.system(cmd)
     for file in os.listdir(ac_dir):
@@ -64,5 +66,5 @@ for file_input in in_files:
             func = line.split(" ")[1].strip()
             result = line.split(" ")[2].strip()
             run(tle_dir, file.split('.')[0], "TLE", func, result, file_input)
-    cmd = f"echo tle_mean:{tle_mean / tle_count} ac_mean:{ac_mean / ac_count} >> ../scripts/out"
+    cmd = f"echo tle_store:{tle_store_num / tle_count} tle_call:{tle_call_num / tle_count} mean:{tle_store_num / tle_call_num} ac_store:{ac_store_num / ac_count} ac_call:{ac_call_num / ac_count} mean:{ac_store_num / ac_call_num} >> ../scripts/out"
     os.system(cmd)
