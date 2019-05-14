@@ -16,7 +16,7 @@
 #include <llvm/PassAnalysisSupport.h>
 #include <llvm/Support/Casting.h>
 #include <llvm/Support/raw_ostream.h>
-
+namespace analyzer {
 class DefineAnalyzer : public llvm::FunctionPass {
 public:
     static char pid;
@@ -31,4 +31,6 @@ private:
 };
 
 char DefineAnalyzer::pid = 1;
+} // namespace analyzer
+
 #endif // DEFINE_ANALYZER_H

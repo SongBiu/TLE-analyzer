@@ -1,4 +1,6 @@
 #include "manager/LoopManager.h"
+
+namespace analyzer {
 void LoopManager::dumpLoop() {
     for (llvm::BasicBlock *basicBlock : loop->getBlocksVector()) {
         llvm::outs() << *basicBlock << "\n";
@@ -93,3 +95,4 @@ std::vector<llvm::Instruction *> LoopManager::getLoadInstructions() {
     }
     return loadInstructions;
 }
+} // namespace analyzer

@@ -1,29 +1,23 @@
 #include "ModuleAnalyzer.h"
+#include <chrono>
 #include <iostream>
 #include <thread>
-#include <chrono>
 
-using namespace llvm;
-using namespace std;
-
-void run(char *moduleDir, char *moduleName, char *functionName, char *result) {
-    ModuleAnalyzer *moduleAnalyzer = new ModuleAnalyzer();
+void run(char *moduleDir, char *moduleName, char *functionName, char *result, char *input) {
+    analyzer::ModuleAnalyzer *moduleAnalyzer = new analyzer::ModuleAnalyzer();
     moduleAnalyzer->readModule(moduleName, moduleDir, "dfsLib");
-    moduleAnalyzer->runBranchCutter(functionName, result);
-    moduleAnalyzer->dumpFunction("main");
-    moduleAnalyzer->initTarget();
-    moduleAnalyzer->runFunction();
+    moduleAnalyzer->runBranchCutter(functionName, result, input);
     exit(0);
 }
 
-int main(int argc, char *argv []) {
+int main(int argc, char *argv[]) {
     if (argc < 4) {
-        outs() << "miss args\n";
+        llvm::outs() << "miss args\n";
         exit(1);
     }
-    thread t(run, argv[1], argv[2], argv[3], argv[4]);
-    this_thread::sleep_for(chrono::milliseconds(3000));
-    cout << "result is -1\n";
+    std::thread t(run, argv[1], argv[2], argv[3], argv[4], argv[5]);
+    std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+    std::cout << "result is -1\n";
     exit(0);
     t.join();
     return 0;

@@ -1,4 +1,5 @@
 #include "pass/BranchCutter.h"
+namespace analyzer {
 bool BranchCutter::runOnFunction(llvm::Function &F) {
     std::string name = F.getName();
     if ("main" == name) {
@@ -17,6 +18,10 @@ bool BranchCutter::runOnFunction(llvm::Function &F) {
     // IRBuilder<> builder(firstInstruction);
     // builder.CreateCall(function, {});
     // return true;
+}
+
+void stubDfsCall() {
+    
 }
 
 std::vector<llvm::BasicBlock *> BranchCutter::getStoreBlocks(llvm::Function &F) {
@@ -70,9 +75,10 @@ void BranchCutter::insertDump(llvm::Instruction *instruction) {
     }
     llvm::Instruction *next = instruction->getNextNode();
     llvm::IRBuilder<> builder(instruction);
-    llvm::Function *init = instruction->getModule()->getFunction("_Z9countInitv");
+    llvm::Function *init = instruction->getModule()->getFunction("");
     builder.CreateCall(init, {});
     builder.SetInsertPoint(next);
     llvm::Function *dump = instruction->getModule()->getFunction("_Z9countDumpv");
     builder.CreateCall(dump, {});
 }
+} // namespace analyzer

@@ -1,5 +1,5 @@
 #include "pass/LoopFinder.h"
-
+namespace analyzer {
 void LoopFinder::getAnalysisUsage(llvm::AnalysisUsage &usage) const {
     usage.setPreservesCFG();
     usage.addRequired<llvm::LoopInfoWrapperPass>();
@@ -60,3 +60,5 @@ void LoopFinder::insertCallInBasicBlock(llvm::BasicBlock *basicBlock, llvm::Func
         llvm::outs() << e.what() << "\n";
     }
 }
+
+} // namespace analyzer

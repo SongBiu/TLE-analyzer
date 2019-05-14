@@ -3,6 +3,7 @@
 //
 #include "manager/BlockManager.h"
 
+namespace analyzer {
 void BlockManager::insertBlockAfterBlock(llvm::BasicBlock *from, llvm::BasicBlock *inserter) {
     llvm::Instruction *lastInstruction = &from->getInstList().back();
     if (Magic::brOpCode == lastInstruction->getOpcode()) {
@@ -21,3 +22,4 @@ void BlockManager::insertBlockAfterBlock(llvm::BasicBlock *from, llvm::BasicBloc
 
 void BlockManager::insertFunctionAfterBlock(llvm::BasicBlock *block, llvm::Function *function,
                                             llvm::ArrayRef<llvm::Value *> args, std::string name) {}
+} // namespace analyzer

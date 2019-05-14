@@ -2,7 +2,7 @@
 // Created by lisong on 2019-03-29.
 //
 #include "pass/DefineAnalyzer.h"
-
+namespace analyzer {
 void DefineAnalyzer::getAnalysisUsage(llvm::AnalysisUsage &usage) const {
     usage.setPreservesCFG();
     usage.addRequired<llvm::LoopInfoWrapperPass>();
@@ -36,3 +36,4 @@ bool DefineAnalyzer::runOnFunction(llvm::Function &F) {
     }
     return true;
 }
+} // namespace analyzer

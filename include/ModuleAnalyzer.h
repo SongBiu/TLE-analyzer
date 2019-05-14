@@ -4,6 +4,7 @@
 #include "pass/BranchCutter.h"
 #include "pass/DefineAnalyzer.h"
 #include "pass/LoopFinder.h"
+#include "manager/ModuleManager.h"
 #include <cstdlib>
 #include <llvm/ExecutionEngine/ExecutionEngine.h>
 #include <llvm/ExecutionEngine/GenericValue.h>
@@ -14,7 +15,10 @@
 #include <llvm/IRReader/IRReader.h>
 #include <llvm/Support/SourceMgr.h>
 #include <llvm/Support/TargetSelect.h>
+#include <llvm/Bitcode/BitcodeWriter.h>
+#include <llvm/Support/raw_ostream.h>
 
+namespace analyzer {
 class ModuleAnalyzer {
 public:
     std::unique_ptr<llvm::Module> &getModule();
@@ -31,7 +35,7 @@ public:
 
     void runDefineAnalyzer();
 
-    void runBranchCutter(std::string dfsFunction, std::string resultName);
+    void runBranchCutter(std::string dfsFunction, std::string resultName, std::string input);
 
     void dumpGlobalVariables();
 
@@ -55,5 +59,6 @@ private:
 
     void linkLib(std::string name, std::string libName);
 };
+} // namespace analyzer
 
 #endif

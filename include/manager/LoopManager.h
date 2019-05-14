@@ -8,6 +8,7 @@
 #include <llvm/Support/raw_ostream.h>
 #include <vector>
 
+namespace analyzer {
 class LoopManager {
 private:
     llvm::Loop *loop;
@@ -25,4 +26,6 @@ public:
     llvm::Instruction *getInsertPoint();
     std::vector<llvm::Instruction *> getLoadInstructions();
 };
+} // namespace analyzer
+
 #endif

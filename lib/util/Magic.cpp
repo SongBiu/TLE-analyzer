@@ -1,4 +1,5 @@
 #include "util/Magic.h"
+namespace analyzer {
 const std::string Magic::functionLoopInit = "_Z8loopInitPv";
 const std::string Magic::functionLoopRun = "_Z7loopRunPv";
 const std::string Magic::functionLoopExit = "_Z8loopExitPv";
@@ -8,9 +9,10 @@ const std::string Magic::initHash = "_Z8initHashv";
 const std::string Magic::addHash = "_Z7addhashi";
 const std::string Magic::dumpHash = "_Z8dumpHashv";
 const std::string Magic::compareHash = "_Z11compareHashv";
-const std::string dfsCallInit = "_Z11dfsCallInit";
-const std::string dfsCallAdd = "_Z10dfsCallAdd";
-const std::string dfsCallDump = "_Z11dfsCallDump";
-const std::string storeInit = "_Z9storeInit";
-const std::string storeAdd = "_Z8storeAdd";
-const std::string storeDump = "_Z9storeDump";
+const std::string Magic::dfsCallInit = "_Z11dfsCallInitv";
+const std::string Magic::dfsCallAdd = "_Z10dfsCallAddv";
+const std::string Magic::dfsCallDump = "_Z11dfsCallDumpv";
+const std::string Magic::storeInit = "_Z9storeInitv";
+const std::string Magic::storeAdd = "_Z8storeAddv";
+const std::string Magic::storeDump = "_Z9storeDumpv";
+} // namespace analyzer

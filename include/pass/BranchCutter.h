@@ -6,6 +6,7 @@
 #include <llvm/Pass.h>
 #include <string>
 #include <vector>
+namespace analyzer {
 class BranchCutter : public llvm::FunctionPass {
 private:
     std::string dfsFunction;
@@ -28,4 +29,6 @@ public:
     void insertDump(llvm::Instruction *instruction);
 };
 char BranchCutter::pid = 0;
+} // namespace analyzer
+
 #endif

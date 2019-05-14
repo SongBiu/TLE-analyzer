@@ -3,6 +3,7 @@
 
 #include <string>
 
+namespace analyzer {
 class Magic {
 public:
     static const int brOpCode = 2;
@@ -26,5 +27,6 @@ public:
     static const std::string storeAdd;
     static const std::string storeDump;
 };
+} // namespace analyzer
 
 #endif
