@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/util/Magic.h
+string
+-
+
+/Users/songl/OneDrive/TLE-analyzer/lib/util/Magic.cpp
+util/Magic.h
+/Users/songl/OneDrive/TLE-analyzer/lib/util/util/Magic.h
+

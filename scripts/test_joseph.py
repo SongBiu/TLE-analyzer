@@ -10,6 +10,9 @@ def read_std_out():
 correct = 0
 
 for file in files:
+    if file[-8:] != "_TLE.cpp":
+        print(file[-8:])
+        continue
     cmd = f"./run {file[:-4]} < ../scripts/in > ../scripts/out"
     print(cmd)
     path = f"{resource_dir}/{file}"
