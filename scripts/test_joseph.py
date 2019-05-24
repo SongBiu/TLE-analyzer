@@ -9,6 +9,8 @@ def read_std_out():
 
 correct = 0
 
+all = 0
+
 for file in files:
     if file[-8:] != "_TLE.cpp":
         print(file[-8:])
@@ -20,16 +22,25 @@ for file in files:
     with open('../scripts/out') as f:
         out = f.readlines()
     stdout = read_std_out()
+
     if len(stdout) != len(out):
+        cmd = f"echo {file} >> ../scripts/files"
+        all += 1
+        os.system(cmd)
         continue
     error = False
     for i in range(len(out)):
         out_line = out[i].strip()
         stdout_line = stdout[i].strip()
         if out_line != stdout_line:
+            cmd = f"echo {file} >> ../scripts/files"
+            all += 1
+            os.system(cmd)
             error =True
             break
     if not error:
+        all += 1
         correct += 1
 
-print(correct * 1.0 / len(files))
+print(correct, all)
+print(correct * 1.0 / all)

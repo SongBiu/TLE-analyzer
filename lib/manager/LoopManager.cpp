@@ -62,19 +62,15 @@ Instruction *LoopManager::insertNoArgs(Instruction *instruction, Function *funct
 Instruction *dumpAndCompare(Instruction *Instruction, Function *dump, Function *compare) { return NULL; }
 
 Instruction *LoopManager::getInsertPoint() {
-    return getLastLoad();
-    Instruction *firstNonIOCall = getFirstNoIOCall();
-    Instruction *lastLoad = getLastLoad();
-    Instruction *entrySubLoop = getEntrySubLoop();
-    Instruction *insertPoint;
+    auto firstNonIOCall = getFirstNoIOCall();
+    auto lastLoad = getLastLoad();
+    auto entrySubLoop = getEntrySubLoop();
+    Instruction *insertPoint = lastLoad;
 
     if (entrySubLoop) {
-        return min(entrySubLoop, min(lastLoad, firstNonIOCall));
+        insertPoint = min(lastLoad, entrySubLoop);
     }
-    if (!firstNonIOCall) {
-        return lastLoad;
-    }
-    return min(lastLoad, firstNonIOCall);
+    return insertPoint;
 }
 
 vector<Instruction *> LoopManager::getLoadInstructions() {
