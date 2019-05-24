@@ -26,6 +26,8 @@ public:
     static const std::string storeInit;
     static const std::string storeAdd;
     static const std::string storeDump;
+    static const std::string callBefore;
+    static const std::string callAfter;
 };
 } // namespace analyzer
 

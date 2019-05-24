@@ -93,4 +93,16 @@ llvm::Function *ModuleManager::findDfsFunction() {
     return NULL;
 }
 
+void ModuleManager::timeCounterDfs(std::string dfsFunction) {
+    this->dfsFunction = dfsFunction;
+    auto main = module->getFunction(Magic::functionMain);
+    auto dfsCallDfs = findCallDfs(main);
+    auto callBefore = module->getFunction(Magic::callBefore);
+    auto callAfter = module->getFunction(Magic::callAfter);
+    llvm::IRBuilder<> builder(dfsCallDfs);
+    builder.CreateCall(callBefore, {});
+    builder.SetInsertPoint(dfsCallDfs->getNextNode());
+    builder.CreateCall(callAfter, {});
+}
+
 } // namespace analyzer

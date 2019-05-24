@@ -37,6 +37,10 @@ public:
 
     void runBranchCutter(std::string dfsFunction, std::string resultName, std::string input);
 
+    void runTimeCount(std::string dfsFunction, std::string input);
+
+    void getArray(std::string dfsFunction, std::string resultName, std::string input);
+
     void dumpGlobalVariables();
 
     void dumpModule();

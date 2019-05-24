@@ -15,4 +15,6 @@ const std::string Magic::dfsCallDump = "_Z11dfsCallDumpv";
 const std::string Magic::storeInit = "_Z9storeInitv";
 const std::string Magic::storeAdd = "_Z8storeAddv";
 const std::string Magic::storeDump = "_Z9storeDumpv";
+const std::string Magic::callBefore = "_Z10callBeforev";
+const std::string Magic::callAfter = "_Z9callAfterv";
 } // namespace analyzer

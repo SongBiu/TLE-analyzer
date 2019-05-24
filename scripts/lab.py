@@ -1,5 +1,10 @@
 import os
 import shutil
+import numpy as np
+from sklearn.svm import LinearSVC
+from sklearn import metrics
+from sklearn.model_selection import train_test_split
+
 
 os.system("echo  > ../scripts/out")
 
@@ -15,41 +20,46 @@ for i in range(len(in_files)):
     in_files[i] = f"{in_root}/{in_files[i]}"
 
 
-ac_store_num = 0
-ac_call_num = 0
-ac_count = 0
-tle_store_num = 0
-tle_call_num = 0
-tle_count = 0
+X = []
+y = []
 
 
 def run(path, name, mode, func, result, input):
-    global ac_store_num, ac_call_num, ac_count, tle_store_num, tle_call_num, tle_count
+    global X, y
     command = f"./run {path} {name} {func} {result} {input} | grep 'number is'"
-    print(command)
     r = os.popen(command)
     lines = r.readlines()
-    if len(lines) != 2:
+    if len(lines) != 3:
         return
-    store_num = int(lines[0].split(" ")[-1])
-    call_num = int(lines[1].split(" ")[-1])
-    if mode == "TLE":
-        tle_store_num += store_num
-        tle_call_num += call_num
-        tle_count += 1
-    else:
-        ac_store_num += store_num
-        ac_call_num += call_num
-        ac_count += 1
+    store = float(lines[0].split(" ")[-1])
+    call = float(lines[1].split(" ")[-1])
+    time = float(lines[2].split(" ")[-1])
 
+    feature = np.array([store, call, time])
+
+    r = 0
+    if mode == "TLE":
+        r = 1
+
+    X.append(feature)
+    y.append(r)
+
+
+def classify(X, y):
+    x_train, x_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.3, random_state=0)
+    clf = LinearSVC(random_state=0, tol=1e-5)
+    clf.fit(x_train, y_train)
+    y_pred = clf.predict(x_test)
+    print(clf.score(x_train, y_train))
+    print(clf.score(x_test, y_test))
+    print(metrics.recall_score(y_test, y_pred))
 
 for file_input in in_files:
-    ac_call_num = 0
-    ac_store_num = 0
-    ac_count = 0
-    tle_call_num = 0
-    tle_store_num = 0
-    tle_count = 0
+    X = []
+    y = []
+    ac_time = []
+    tle_time = []
     cmd = f"echo {file_input} >> ../scripts/out"
     os.system(cmd)
     for file in os.listdir(ac_dir):
@@ -66,5 +76,6 @@ for file_input in in_files:
             func = line.split(" ")[1].strip()
             result = line.split(" ")[2].strip()
             run(tle_dir, file.split('.')[0], "TLE", func, result, file_input)
-    cmd = f"echo tle_store:{tle_store_num / tle_count} tle_call:{tle_call_num / tle_count} mean:{tle_store_num / tle_call_num} ac_store:{ac_store_num / ac_count} ac_call:{ac_call_num / ac_count} mean:{ac_store_num / ac_call_num} >> ../scripts/out"
-    os.system(cmd)
+    input_name = file_input.split("/")[-1]
+    np.save(f"X_{input_name}.npy",np.array(X))
+    np.save(f"y_{input_name}.npy",np.array(y))

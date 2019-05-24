@@ -23,5 +23,7 @@ public:
     ModuleManager(std::unique_ptr<llvm::Module> &module) : module(module) {}
 
     void stub(std::string dfsFunction, std::string result);
+
+    void timeCounterDfs(std::string dfsFunction);
 };
 } // namespace analyzer

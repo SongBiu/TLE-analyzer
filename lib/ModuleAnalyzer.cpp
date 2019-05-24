@@ -63,6 +63,29 @@ void ModuleAnalyzer::runBranchCutter(std::string dfsFunction, std::string result
     std::system(("gtimeout 5 ./target < " + input).c_str());
 }
 
+void ModuleAnalyzer::runTimeCount(std::string dfsFunction, std::string input) {
+    auto moduleManager = new ModuleManager(module);
+    moduleManager->timeCounterDfs(dfsFunction);
+    std::error_code EC;
+    llvm::raw_fd_ostream file("target.ll", EC, llvm::sys::fs::F_None);
+    llvm::WriteBitcodeToFile(*module, file);
+    file.flush();
+    std::system("clang++ target.ll -o target");
+    std::system(("gtimeout 5 ./target < " + input).c_str());
+}
+
+void ModuleAnalyzer::getArray(std::string dfsFunction, std::string resultName, std::string input) {
+    auto moduleManager = new ModuleManager(module);
+    moduleManager->timeCounterDfs(dfsFunction);
+    moduleManager->stub(dfsFunction, resultName);
+    std::error_code EC;
+    llvm::raw_fd_ostream file("target.ll", EC, llvm::sys::fs::F_None);
+    llvm::WriteBitcodeToFile(*module, file);
+    file.flush();
+    std::system("clang++ target.ll -o target");
+    std::system(("gtimeout 5 ./target < " + input).c_str());
+}
+
 void ModuleAnalyzer::dumpGlobalVariables() {
     for (llvm::GlobalVariable &globalVariable : module->getGlobalList()) {
         llvm::outs() << '(' << *globalVariable.getType() << ") " << globalVariable.getName() << "\n";

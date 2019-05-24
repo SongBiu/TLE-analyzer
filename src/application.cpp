@@ -6,7 +6,7 @@
 void run(char *moduleDir, char *moduleName, char *functionName, char *result, char *input) {
     analyzer::ModuleAnalyzer *moduleAnalyzer = new analyzer::ModuleAnalyzer();
     moduleAnalyzer->readModule(moduleName, moduleDir, "dfsLib");
-    moduleAnalyzer->runBranchCutter(functionName, result, input);
+    moduleAnalyzer->getArray(functionName, result, input);
     exit(0);
 }
 
