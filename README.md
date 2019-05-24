@@ -9,7 +9,9 @@ It is a simple tools which can help students to find and solve tle error when th
 
 #  环境
 
-开发阶段主要是在MacOS Mojave 10.14.5上，如果在Linux和Windows上运行，可能需要更改CMakeLists.txt
+开发阶段主要是在MacOS Mojave 10.14.5上
+
+如果在Linux和Windows上运行，可能需要更改CMakeLists.txt
 
 将LLVM_HOME更改为LLVM的安装路径，并删去C_LIB及其相关的cmake命令。
 
