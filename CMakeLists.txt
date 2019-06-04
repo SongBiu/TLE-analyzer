@@ -1,20 +1,11 @@
 cmake_minimum_required(VERSION 3.13)
-
 project(analyzer)
 set(CMAKE_CXX_STANDARD 17)
-
-# add llvm support
-set(LLVM_HOME /usr/local/opt/llvm)
-include_directories(${LLVM_HOME}/include)
-link_directories(${LLVM_HOME}/lib)
-
-# set my library
+find_package(LLVM REQUIRED 6.0)
+include_directories(${LLVM_INCLUDE_DIR})
+link_directories(${LLVM_LIBRARY})
 include_directories(${PROJECT_SOURCE_DIR}/include)
-
-# set output path
 set(LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/lib)
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})
-
-# other set
 add_subdirectory(lib)
 add_subdirectory(src)
